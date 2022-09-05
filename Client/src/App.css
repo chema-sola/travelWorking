@@ -5,8 +5,36 @@
   text-align: center;
 } */
 
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+*{
+    padding: 0;
+    margin: 0 ;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: aliceblue;
+    font-family: "Poppins", sans-serif;
+}
+
+
 @media screen and (max-width:992px){
   .menu {
     margin: 0 1rem !important;
   }
+}
+
+.menu__togle {
+  outline: none;
+}
+
+.menu__togle:focus {
+  outline: none !important;
+}
+.carousel-inner {
+  height: -webkit-fill-available;
 }
