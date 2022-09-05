@@ -6,13 +6,6 @@ import header01 from '../assets/img/header_frontpage_0.webp'
 import header02 from '../assets/img/header_frontpage_2_sm.webp'
 
 import './home.css'
-/* 
-Holas asndiandoina
-dawndad
-dsdinasidas
-dasda
-*/
-
 
 function Home() {
   return (
