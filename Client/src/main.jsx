@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css'
+import './App.css'
 
 //Pages
 import App from './App'
@@ -18,14 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
-        <Route index element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/ofertas' element={<Ofertas />} />
-
-
+          <Route index element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/ofertas' element={<Ofertas />} />
         </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 )
-

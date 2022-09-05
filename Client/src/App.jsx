@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react'
-import { Navbar, Nav, Container, Button } from 'react-bootstrap'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import UseContext from './UseContext'
 import traductor from './translate'
-import { BiWorld } from 'react-icons/bi'
+import { Menu } from './Menu'
 
 function App() {
   const [idioma, setIdioma] = useState(0)
@@ -12,63 +11,59 @@ function App() {
 
   return (
     <UseContext.Provider value={{ traduce, idioma }}>
-      <nav class='navbar navbar-expand-lg' style={{ backgroundColor: '#e3f2fd' }}>
+      {/* <Navbar className='navbar navbar-expand-lg' style={{ backgroundColor: '#e3f2fd' }}>
         <Container>
-          <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
-            <div class='navbar-nav'>
-              <a class='nav-item nav-link active'>
-                <Link to='/' className='navbar-brand'>
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
+              <div className='navbar-nav'>
+                <Link to='/' className='navbar-brand nav-item nav-link '>
                   Principal
                 </Link>
-              </a>
-              <a class='nav-item nav-link'>
-                <Link to='/ofertas' className='nav-link'>
+                <Link to='/ofertas' className='nav-item nav-link '>
                   {'Ofertas'}
                 </Link>
-              </a>
+              </div>
             </div>
-          </div>
 
-          <Navbar>
-            <Navbar.Brand>
-              <Link to='/login' className='nav-link'>
-                {'Login'}
-              </Link>
-            </Navbar.Brand>
             <Navbar.Toggle />
-            <Navbar.Collapse>
-              <Nav className='justify-content-end' style={{ width: '100%' }}>
-                <div class='dropdown'>
-                  <div
-                    type='button'
-                    id='dropdownMenuButton'
-                    data-toggle='dropdown'
-                    aria-haspopup='true'
-                    aria-expanded='false'
+            <Nav className='justify-content-end' style={{ width: '100%' }}>
+              <Navbar.Brand>
+                <Link to='/login' className='nav-link'>
+                  {'Login'}
+                </Link>
+              </Navbar.Brand>
+              <Dropdown aria-labelledby='dropdownMenuButton'>
+                <Dropdown.Toggle>
+                  <BiWorld />
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    size='sm'
+                    variant={idioma === 0 ? 'primary' : 'outline-primary'}
+                    onClick={() => setIdioma(0)}
                   >
-                    <BiWorld />
-                  </div>
-                  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                    <div size='sm' variant={idioma === 0 ? 'primary' : 'outline-primary'} onClick={() => setIdioma(0)}>
-                      Español
-                    </div>
-                    <br />
-                    <div size='sm' variant={idioma === 1 ? 'primary' : 'outline-primary'} onClick={() => setIdioma(1)}>
-                      Catalan
-                    </div>
-                  </div>
-                </div>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-
-         
+                    Español
+                  </Dropdown.Item>
+                  <br />
+                  <Dropdown.Item
+                    size='sm'
+                    variant={idioma === 1 ? 'primary' : 'outline-primary'}
+                    onClick={() => setIdioma(1)}
+                  >
+                    Catalan
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
-      </nav>
+      </Navbar> */}
 
-      <Container>
-        <Outlet />
-      </Container>
+      <Menu idioma={idioma} />
+      {/* <Container> */}
+      <Outlet />
+      {/* </Container> */}
     </UseContext.Provider>
   )
 }
