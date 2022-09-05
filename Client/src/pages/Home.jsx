@@ -6,7 +6,10 @@ import header01 from '../assets/img/header_frontpage_0.webp'
 import header02 from '../assets/img/header_frontpage_2_sm.webp'
 
 import './home.css'
-
+/**
+ * 
+ * @returns gthujiolpokih
+ */
 function Home() {
   return (
     <div className='hero'>
