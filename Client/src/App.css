@@ -5,8 +5,13 @@
   text-align: center;
 } */
 
+/* *{
+  font-size: 62.5%;
+}
+ */
 @media screen and (max-width:992px){
   .menu {
     margin: 0 1rem !important;
   }
 }
+
