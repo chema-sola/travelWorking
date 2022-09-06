@@ -5,6 +5,7 @@
   text-align: center;
 } */
 
+
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
 *{
@@ -20,6 +21,7 @@ body {
     background-color: aliceblue;
     font-family: "Poppins", sans-serif;
 }
+
 
 
 @media screen and (max-width:992px){
