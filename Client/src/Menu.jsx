@@ -6,7 +6,7 @@ export const Menu = ({ idioma }) => {
   return (
     <Navbar expand='lg' style={{ backgroundColor: '#e3f2fd' }}>
       <Container className='menu'>
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Toggle className='menu__togle' aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Link to='/' className='navbar-brand nav-item nav-link '>
             Principal
