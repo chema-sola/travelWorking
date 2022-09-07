@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useAuthStore, useForm } from '../hooks'
+
 import './login.css'
 
 const formValues = {
@@ -54,7 +56,7 @@ function Login() {
               <div className='field padding-bottom--24'>
                 <input type='submit' name='submit' value='Entrar' />
               </div>
-              <Link to="/register">¿Aún no tienes cuenta?</Link>
+              <Link to='/register'>¿Aún no tienes cuenta?</Link>
             </form>
           </div>
         </div>

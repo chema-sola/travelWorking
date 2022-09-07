@@ -8,7 +8,6 @@ import header01 from '../assets/img/header_frontpage_0.webp'
 import header02 from '../assets/img/header_frontpage_2_sm.webp'
 
 import './home.css'
-import { Cartas } from '../Cartas/Cartas'
 import { Link } from 'react-router-dom'
 
 function Home() {
