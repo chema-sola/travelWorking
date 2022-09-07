@@ -1,9 +1,24 @@
 .footer{
     margin-top: 1rem;
     padding: 1rem;
-    background-color: rgb(100, 162, 206);
-    bottom: 0;
-    left: 0;
+    background-color: rgb(227, 242, 253);
+  }
+
+  .footer__center{
     width: 100%;
-    height: 150px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .footer__box{
+    margin: 1rem;
+   text-align: center;
+
+    width: 400px;
+    height: 200px;
+  }
+
+  .footer__title{
+    padding-bottom: 10px;
+    font-weight: bold;
   }
