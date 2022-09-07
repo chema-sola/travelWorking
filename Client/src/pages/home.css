@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.hero__img{
+.hero__img {
   width: 100%;
   height: auto;
 }
@@ -15,11 +15,15 @@
 }
 
 
+<<<<<<< HEAD
 .hero__btn{
+=======
+.hero__btn {
+>>>>>>> origin/ismael-api-front
   position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .box__oferta {
@@ -33,34 +37,36 @@
 
 .button_mostrarMas {
   text-align: center;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-.button_mostrarMas:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
-}
-.button_mostrarMas:active {
-	position:relative;
-	top:1px;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+  background-color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
 
-@supports(object-fit: cover){
-  .hero__img{
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-    }
+.button_mostrarMas:hover {
+  background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+  background-color: #f6f6f6;
+}
+
+.button_mostrarMas:active {
+  position: relative;
+  top: 1px;
+}
+
+@supports(object-fit: cover) {
+  .hero__img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }

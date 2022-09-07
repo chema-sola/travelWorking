@@ -7,12 +7,16 @@ import { TrabajosClientes } from '../models/trabajoCliente.js'
 
 export const getTrabajos = async (req, res = response) => {
   try {
-    const limit = 2
-    let { keyword, page = 1 } = req.query
+    let { keyword, page = 1, limit = 10 } = req.query
     page = page == 0 ? 1 : page
-    let query = { include: Clientes, limit, offset: (page - 1) * limit }
+    let query = { include: Clientes, limit: Number(limit), offset: (page - 1) * limit }
     if (keyword) {
-      query = { include: Clientes, where: { titulo: { [Op.like]: `%${keyword}%` } }, limit, offset: (page - 1) * limit }
+      query = {
+        include: Clientes,
+        where: { titulo: { [Op.like]: `%${keyword}%` } },
+        limit: Number(limit),
+        offset: (page - 1) * limit,
+      }
     }
     const trabajo = await Trabajo.findAll(query)
 

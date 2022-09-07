@@ -1,4 +1,8 @@
-export const Producto = ({ id, nombre, descripcion, precio }) => {
+import { useSubstring } from '../../hooks'
+
+export const Producto = ({ id, titulo, descripcion }) => {
+  const newDesc = useSubstring(descripcion, 80)
+
   return (
     <div className='product'>
       <img
@@ -7,11 +11,10 @@ export const Producto = ({ id, nombre, descripcion, precio }) => {
         alt='Rome'
       />
       <div className='product-content'>
-        <h1 className='product-header'>{nombre}</h1>
-        <p className='product-text'>{descripcion}</p>
-        <p className='product-price'>{precio} €</p>
+        <h1 className='product-header'>{titulo}</h1>
+        <p className='product-text'>{newDesc}</p>
         <div className='button-box'>
-          <button className='product-btn product-cart-btn'>Boton</button>
+          <button className='product-btn product-cart-btn'>Explora</button>
         </div>
       </div>
     </div>
