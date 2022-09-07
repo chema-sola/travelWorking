@@ -1,0 +1,22 @@
+/* .margin_form{
+    background: url(../assets/img/img04.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.margin_form{
+    padding: 20px;
+    background: url(../assets/img/img07.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box_fecha_nacimiento {
+    display: flex;
+    gap: 22px;
+}
+
+.box_fecha_nacimiento select{
+    width: 100px;
+}
+

@@ -1,6 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import './login.css'
-
 function Login() {
   return (
     <>
@@ -24,9 +23,7 @@ function Login() {
               <div className='field padding-bottom--24'>
                 <input type='submit' name='submit' value='Entrar' />
               </div>
-              <a href='#'>¿Has olvidado tu contraseña?</a>
-              <br />
-              <a href='#'>¿Aún no tienes cuenta?</a>
+              <Link to="/register">¿Aún no tienes cuenta?</Link>
             </form>
           </div>
         </div>

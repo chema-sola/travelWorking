@@ -204,11 +204,18 @@
     }
   } 
 
-  .Allogin {
+  /* .Allogin {
     padding-top: 50px;
-    background-image: url('../assets/img/viajeros.jpg');
+    background-image: url('../assets/img/img08.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 100%;
 
+  } */
+
+  .Allogin {
+    padding: 20px;
+    background: url(../assets/img/img08.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
