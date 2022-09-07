@@ -14,6 +14,9 @@ export const Menu = ({ idioma }) => {
           <Link to='/ofertas' className='nav-item nav-link '>
             {'Ofertas'}
           </Link>
+          <Link to='/ofertadetallada' className='nav-item nav-link '>
+            {'Ofertadetallada'}
+          </Link>
           <Nav className='justify-content-end' style={{ width: '100%' }}>
             <Navbar.Brand>
               <Link to='/login' className='nav-link'>

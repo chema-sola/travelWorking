@@ -4,6 +4,8 @@ import UseContext from './UseContext'
 import traductor from './translate'
 import { Menu } from './Menu'
 
+import 'react-image-lightbox/style.css'
+
 function App() {
   const [idioma, setIdioma] = useState(0)
   const traduce = (etiqueta) => traductor[etiqueta][idioma]
