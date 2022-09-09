@@ -212,3 +212,33 @@ export const inscribirteTrabajo = async (req, res = response) => {
     })
   }
 }
+
+export const getTrabajosInscritos = async (req, res = response) => {
+  try {
+    const { clienteid } = req.params
+
+    const trabajoCliente = await TrabajosClientes.findAll({
+      where: { ClienteId: clienteid },
+      include: [{ model: Trabajo }],
+    })
+
+    let trabajos = []
+
+    trabajoCliente.forEach((element) => {
+      let { Trabajo: trabajo, ...rest } = element
+      trabajos.push(trabajo)
+    })
+
+    return res.status(200).json({
+      ok: true,
+      data: trabajos,
+      msg: 'Información obtenida correctamente',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No te has podido inscribir a la oferta de trabajo',
+    })
+  }
+}

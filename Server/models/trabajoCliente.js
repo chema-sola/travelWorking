@@ -22,6 +22,7 @@ export const TrabajosClientes = loadSequelize.define(
         key: 'id',
       },
     },
+    estado: DataTypes.STRING(45),
   },
   { tableName: 'TrabajosClientes', timestamps: false }
 )

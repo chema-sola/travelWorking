@@ -1,5 +1,7 @@
 import { response } from 'express'
 import { Clientes } from '../models/clienteModel.js'
+import { TrabajosClientes } from '../models/trabajoCliente.js'
+import { Trabajo } from '../models/trabajoModel.js'
 
 export const getClienteById = async (req, res = response) => {
   try {
@@ -28,14 +30,28 @@ export const getClienteById = async (req, res = response) => {
 export const loginCliente = async (req, res = response) => {
   try {
     const { email, password } = req.body
-    const user = await Clientes.findOne({ where: { email, password } })
-    console.log('------------------->', user)
+    let user = await Clientes.findOne({ where: { email, password } })
+
     if (!user) {
       return res.status(400).json({
         ok: false,
         msg: 'El usuario o la contraseña no son correctos',
       })
     }
+
+    const trabajoCliente = await TrabajosClientes.findAll({
+      where: { ClienteId: user.id },
+      include: [{ model: Trabajo }],
+    })
+
+    let trabajos = []
+
+    trabajoCliente.forEach((element) => {
+      let { Trabajo: trabajo, ...rest } = element
+      trabajos.push(trabajo)
+    })
+
+    user.dataValues.trabajo = trabajos
 
     return res.status(200).json({
       ok: true,

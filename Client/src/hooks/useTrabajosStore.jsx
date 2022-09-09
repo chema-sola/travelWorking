@@ -17,6 +17,16 @@ export const useTrabajos = () => {
     }
   }
 
+  const startLoadAllTrabajosInscritos = async (clientId) => {
+    try {
+      const response = await trabajosApi(`/trabajo/${clientId}/candidaturas`)
+      const { data } = await response.json()
+    } catch (error) {
+      console.log('Error al cargar los datos')
+      console.log(error)
+    }
+  }
+
   return {
     startLoadAllNotes,
     trabajos,
