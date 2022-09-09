@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { onCheking, onLogOut, onLogin } from '../store/auth/authSlice'
+import { onCheking, onLogOut, onLogin, onActiveUser } from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
 
 export const useAuthStore = () => {
-  const { status, user } = useSelector((state) => state.auth)
+  const { status, user, activeUser } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   const startLogin = async ({ email, password }) => {
@@ -20,9 +20,21 @@ export const useAuthStore = () => {
     }
   }
 
+  const startGettingInfoProfile = async (id) => {
+    try {
+      const resp = await trabajosApi(`/clientes/${id}`)
+      const { data } = await resp.json()
+      dispatch(onActiveUser(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
     status,
     user,
     startLogin,
+    startGettingInfoProfile,
+    activeUser,
   }
 }

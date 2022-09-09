@@ -17,6 +17,15 @@ export const Menu = () => {
           <Link to='/ofertas' className='nav-item nav-link '>
             {'Ofertas'}
           </Link>
+
+          {user.id && (
+            <Link to={`/perfil/${user.id}`} className='nav-link'>
+              {'Mi perfil'}
+            </Link>
+          )}
+          <Link to={`/perfil/2`} className='nav-link'>
+            {'No es mi perfil'}
+          </Link>
           <Nav className='justify-content-end' style={{ width: '100%' }}>
             <Navbar.Brand>
               {user.id ? (

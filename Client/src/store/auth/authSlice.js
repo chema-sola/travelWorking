@@ -5,6 +5,7 @@ export const authSlice = createSlice({
   initialState: {
     status: 'not-authenticated', // 'authenticated','not-authenticated','checking'
     user: {},
+    activeUser: null,
   },
   reducers: {
     onCheking: (state) => {
@@ -19,7 +20,10 @@ export const authSlice = createSlice({
       state.status = 'not-authenticated'
       state.user = {}
     },
+    onActiveUser: (state, { payload }) => {
+      state.activeUser = payload
+    },
   },
 })
 
-export const { onCheking, onLogOut, onLogin } = authSlice.actions
+export const { onCheking, onLogOut, onLogin, onActiveUser } = authSlice.actions

@@ -18,6 +18,7 @@ export const Clientes = loadSequelize.define(
     direccion: DataTypes.STRING(150),
     rol: DataTypes.STRING(100),
     idioma: DataTypes.TEXT(),
+    descripcion: DataTypes.TEXT(),
   },
   { tableName: 'Clientes', timestamps: false }
 )
