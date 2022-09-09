@@ -5,8 +5,8 @@ import { useAuthStore, useForm } from '../hooks'
 import './login.css'
 
 const formValues = {
-  email: '',
-  password: '',
+  email: 'midismael@gmail.com',
+  password: '1234',
 }
 function Login() {
   const [formState, handleInputChange] = useForm(formValues)

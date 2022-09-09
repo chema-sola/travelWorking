@@ -29,7 +29,7 @@ export const loginCliente = async (req, res = response) => {
   try {
     const { email, password } = req.body
     const user = await Clientes.findOne({ where: { email, password } })
-
+    console.log('------------------->', user)
     if (!user) {
       return res.status(400).json({
         ok: false,
