@@ -1,0 +1,16 @@
+.box-aboutme {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.bg__about {
+
+    background-color: #ddd;
+}
+.about__img {
+    display: block;
+    width: 200px;
+    height: 200px;
+}
