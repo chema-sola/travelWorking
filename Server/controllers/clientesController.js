@@ -46,12 +46,14 @@ export const loginCliente = async (req, res = response) => {
 
     let trabajos = []
 
-    trabajoCliente.forEach((element) => {
-      let { Trabajo: trabajo, ...rest } = element
+    trabajoCliente.forEach((element, i) => {
+      let { Trabajo: trabajo, estado, TrabajoId: trabajoId } = element
       trabajos.push(trabajo)
+      trabajos[i].dataValues.estado = estado
+      trabajos[i].dataValues.trabajoId = trabajoId
     })
 
-    user.dataValues.trabajo = trabajos
+    user.dataValues.candidaturas = trabajos
 
     return res.status(200).json({
       ok: true,
