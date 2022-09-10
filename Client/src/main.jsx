@@ -15,8 +15,9 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import { Cartas } from '../src/Cartas/Cartas'
 import Formulario from './pages/Formulario'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { Perfil } from './Perfil/Perfil'
+import { Candidaturas } from './Candidaturas/Candidaturas'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/ofertas' element={<Cartas />} />
             <Route path='/register' element={<Formulario />} />
             <Route path='/perfil/:id' element={<Perfil />} />
+            <Route path='/candidaturas/:id' element={<Candidaturas />} />
           </Route>
         </Routes>
       </BrowserRouter>
