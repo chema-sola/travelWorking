@@ -238,7 +238,34 @@ export const getTrabajosInscritos = async (req, res = response) => {
     return res.status(500).json({
       ok: false,
       error: message,
-      msg: 'No te has podido inscribir a la oferta de trabajo',
+      msg: 'No se ha podido obtener los datos de las inscripciones',
+    })
+  }
+}
+
+export const getTrabajosCreadosPorMi = async (req, res = response) => {
+  try {
+    const { id } = req.params
+    // const misTrabajosWithUsers = await TrabajosClientes.findAll({
+    //   where: {},
+    //   include: [{ model: Clientes }, { model: Trabajo }],
+    // })
+
+    const misTrabajos = await Trabajo.findAll({
+      where: { ClienteId: id },
+      include: [{ model: TrabajosClientes }],
+    })
+
+    return res.status(200).json({
+      ok: true,
+      data: misTrabajos,
+      msg: 'Trabajos recibidos',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No se han podido ob tener los trabajos creados',
     })
   }
 }

@@ -7,12 +7,14 @@ import {
   getTrabajosInscritos,
   inscribirteTrabajo,
   updateTrabajo,
+  getTrabajosCreadosPorMi,
 } from '../controllers/trabajoController.js'
 
 export const router = express.Router()
 
 router.get('/', getTrabajos)
 router.get('/:id', getITrabajoById)
+router.get('/misTrabajos/:id', getTrabajosCreadosPorMi)
 router.get('/:clienteid/candidaturas', getTrabajosInscritos)
 router.post('/', createTrabajo)
 router.post('/:trabajoid/cliente/:clienteid', inscribirteTrabajo)

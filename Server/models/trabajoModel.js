@@ -1,6 +1,7 @@
 import DataTypes from 'sequelize'
 import { loadSequelize } from '../loadSequelize.js'
 import { Clientes } from './clienteModel.js'
+import { TrabajosClientes } from './trabajoCliente.js'
 
 export const Trabajo = loadSequelize.define(
   'Trabajos',
