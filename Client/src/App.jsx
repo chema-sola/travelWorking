@@ -7,7 +7,8 @@ import { useEffect } from 'react'
 import { useTrabajos } from './hooks/useTrabajosStore'
 import Footer from './pages/Footer'
 
-import 'react-image-lightbox/style.css'
+// import 'react-image-lightbox/style.css'
+import 'react-image-gallery/styles/css/image-gallery.css'
 
 function App() {
   const [idioma, setIdioma] = useState(0)
@@ -24,7 +25,6 @@ function App() {
       <Menu idioma={idioma} />
       <Outlet />
       <Footer />
-
     </UseContext.Provider>
   )
 }

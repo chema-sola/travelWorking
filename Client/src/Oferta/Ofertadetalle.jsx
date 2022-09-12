@@ -132,8 +132,8 @@ function Ofertadetalle() {
           </div>
           <p>De lunes a jueves 5 horas diarias, a pactar horario</p>
         </div>
+        <Gallery />
       </div>
-      <Gallery />
 
       {/* <div className='detalles__image_galery'>
         <img

@@ -8,23 +8,23 @@
 
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
-*{
-    padding: 0;
-    margin: 0 ;
+* {
+  padding: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body {
-    background-color: #F9FFFD;
-    font-family: "Poppins", sans-serif;
+  background-color: #F9FFFD;
+  font-family: "Poppins", sans-serif;
 }
 
 
 
-@media screen and (max-width:992px){
+@media screen and (max-width:992px) {
   .menu {
     margin: 0 1rem !important;
   }
@@ -37,7 +37,17 @@ body {
 .menu__togle:focus {
   outline: none !important;
 }
+
 .carousel-inner {
   height: -webkit-fill-available;
 }
 
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: calc(400px) !important;
+  height: calc(400px) !important;
+}
+
+.image-gallery-fullscreen-button {
+  display: none;
+}
