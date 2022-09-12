@@ -1,0 +1,137 @@
+.detalles__container {
+    background-color: white;
+    padding: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.containerdetalle {
+  
+    padding: 1rem;
+    background-color: white;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    transition: 0.2s;
+    letter-spacing: 0.1rem;
+    margin-bottom: 20px;
+}
+
+.detalles__initialtext {
+    display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+}
+
+@media screen and (max-width: 768px) {
+    .detalles__initialtext {
+        flex-direction: column;
+    }
+}
+
+.detalles__texto{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.detalles__texto p {
+    text-align: justify;
+}
+
+.detalles__titulo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detalles__titulo h4{
+    margin: 0;
+}
+
+.detalles__titulo svg{
+    font-size: 2rem;
+    color: gray;
+}
+
+.visorimagen{
+  width: 200px;
+  height: 150px;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.visorimagen:hover {
+  transform: translateY(-1%);
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+}
+
+.button {
+  --color: #F95738;
+  padding: 0.4em 1em;
+  background-color: transparent;
+  border-radius: .3em;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 20px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: var(--color);
+  z-index: 1;
+  height: fit-content;
+  width: fit-content;
+ }
+ .button::before, .button::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: var(--color);
+  transition: 1s ease;
+ }
+ 
+ .button::before {
+  top: -1em;
+  left: -1em;
+ }
+ 
+ .button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+ }
+ 
+ .button:hover::before, .button:hover::after {
+  height: 410px;
+  width: 410px;
+ }
+ 
+ .button:hover {
+  /* color: rgb(10, 25, 30); */
+  color: white;
+  border: 1px solid transparent;
+ }
+ 
+ .button:active {
+  filter: brightness(.8);
+ }
+.detalles__image_galery{
+  display: flex;
+ gap: 2rem;
+ justify-content: space-around;
+ flex-wrap: wrap;
+}
+ 

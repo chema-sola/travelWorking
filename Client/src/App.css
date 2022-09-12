@@ -18,7 +18,7 @@ a {
 }
 
 body {
-    background-color: aliceblue;
+    background-color: #F9FFFD;
     font-family: "Poppins", sans-serif;
 }
 
@@ -40,3 +40,4 @@ body {
 .carousel-inner {
   height: -webkit-fill-available;
 }
+

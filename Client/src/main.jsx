@@ -14,6 +14,7 @@ import App from './App'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import { Cartas } from '../src/Cartas/Cartas'
+import Ofertadetalle from './Oferta/Ofertadetalle'
 import Formulario from './pages/Formulario'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Perfil } from './Perfil/Perfil'
@@ -29,7 +30,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/ofertas' element={<Cartas />} />
             <Route path='/register' element={<Formulario />} />
             <Route path='/perfil/:id' element={<Perfil />} />
-          </Route>
+            <Route path='/ofertadetallada' element={<Ofertadetalle />} />
+
+        </Route>
         </Routes>
       </BrowserRouter>
     </Provider>

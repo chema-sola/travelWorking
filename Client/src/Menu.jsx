@@ -17,6 +17,9 @@ export const Menu = () => {
           <Link to='/ofertas' className='nav-item nav-link '>
             {'Ofertas'}
           </Link>
+          <Link to='/ofertadetallada' className='nav-item nav-link '>
+            {'Ofertadetallada'}
+          </Link>
 
           {user.id && (
             <Link to={`/perfil/${user.id}`} className='nav-link'>
