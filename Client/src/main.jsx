@@ -31,10 +31,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/ofertas' element={<Cartas />} />
             <Route path='/register' element={<Formulario />} />
             <Route path='/perfil/:id' element={<Perfil />} />
-            <Route path='/candidaturas/:id' element={<Candidaturas />} />
-            <Route path='/ofertadetallada' element={<Ofertadetalle />} />
-
-        </Route>
+            <Route path='/ofertadetallada/:id' element={<Ofertadetalle />} />
+            <Route path='*' element={<Home />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
