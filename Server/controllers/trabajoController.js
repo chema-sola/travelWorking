@@ -212,3 +212,69 @@ export const inscribirteTrabajo = async (req, res = response) => {
     })
   }
 }
+
+export const getTrabajosInscritos = async (req, res = response) => {
+  try {
+    const { clienteid } = req.params
+
+    const trabajoCliente = await TrabajosClientes.findAll({
+      where: { ClienteId: clienteid },
+      include: [{ model: Trabajo }],
+    })
+
+    let trabajos = []
+
+    trabajoCliente.forEach((element) => {
+      let { Trabajo: trabajo, ...rest } = element
+      trabajos.push(trabajo)
+    })
+
+    return res.status(200).json({
+      ok: true,
+      data: trabajos,
+      msg: 'Información obtenida correctamente',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No se ha podido obtener los datos de las inscripciones',
+    })
+  }
+}
+
+export const getTrabajosCreadosPorMi = async (req, res = response) => {
+  try {
+    const { id } = req.params
+    // const misTrabajosWithUsers = await TrabajosClientes.findAll({
+    //   where: { '$Trabajo.ClienteId$': id },
+    //   include: [{ model: Clientes }, { model: Trabajo }],
+    // })
+
+    const misTrabajos = await Trabajo.findAll({
+      where: { ClienteId: id },
+      include: [{ model: TrabajosClientes }],
+    })
+
+    return res.status(200).json({
+      ok: true,
+      data: misTrabajos,
+      msg: 'Trabajos recibidos',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No se han podido ob tener los trabajos creados',
+    })
+  }
+}
+
+/**
+ * 
+ * 
+ * SELECT `Trabajos`.`id`, `Trabajos`.`estrellas`, `Trabajos`.`disponibilidadinicial`, `Trabajos`.`disponibilidadfinal`, `Trabajos`.`descripcion`, `Trabajos`.`ayuda`, `Trabajos`.`idioma`, `Trabajos`.`residencia`, `Trabajos`.`otros`, `Trabajos`.`viajerosMinimo`, `Trabajos`.`horasdia`, `Trabajos`.`ClienteId`, `Trabajos`.`titulo`, `TrabajosClientes`.`TrabajoId` AS `TrabajosClientes.TrabajoId`, `TrabajosClientes`.`ClienteId` AS `TrabajosClientes.ClienteId`, `TrabajosClientes`.`estado` AS `TrabajosClientes.estado`, `Cliente`.`id` AS `Cliente.id`, `Cliente`.`dni` AS `Cliente.dni`, `Cliente`.`email` AS `Cliente.email`, `Cliente`.`nombre` AS `Cliente.nombre`, `Cliente`.`apellidos` AS `Cliente.apellidos`, `Cliente`.`edad` AS `Cliente.edad`, `Cliente`.`telefono` AS `Cliente.telefono`, `Cliente`.`foto` AS `Cliente.foto`, `Cliente`.`password` AS `Cliente.password`, `Cliente`.`pais` AS `Cliente.pais`, `Cliente`.`ciudad` AS `Cliente.ciudad`, `Cliente`.`cpostal` AS `Cliente.cpostal`, `Cliente`.`direccion` AS `Cliente.direccion`, `Cliente`.`rol` AS `Cliente.rol`, `Cliente`.`idioma` AS `Cliente.idioma`, 
+`Cliente`.`descripcion` AS `Cliente.descripcion` FROM `Trabajos` AS `Trabajos` LEFT OUTER JOIN `TrabajosClientes` AS `TrabajosClientes` ON `Trabajos`.`id` = `TrabajosClientes`.`TrabajoId` LEFT OUTER JOIN 
+`Clientes` AS `Cliente` ON `Trabajos`.`ClienteId` = `Cliente`.`id` WHERE `Trabajos`.`ClienteId` = '2';
+
+ */

@@ -1,0 +1,24 @@
+.status {
+    padding: 6px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 0;
+    gap: 0.1rem;
+}
+
+.status__pending {
+    color: #3363ff;
+    background-color: #d8e0fd;
+}
+
+.status__accept {
+    color: #33ff6d;
+    background-color: #d8fde8;
+}
+
+.status__denied {
+    color: #ff3377;
+    background-color: #fdd8e3;
+}
