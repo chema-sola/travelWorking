@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useSubstring } from '../../hooks'
 
 export const Producto = ({ id, titulo, descripcion }) => {
@@ -14,7 +15,9 @@ export const Producto = ({ id, titulo, descripcion }) => {
         <h1 className='product-header'>{titulo}</h1>
         <p className='product-text'>{newDesc}</p>
         <div className='button-box'>
-          <button className='product-btn product-cart-btn'>Explora</button>
+          <Link to={`/ofertadetallada/${id}`} className='product-btn product-cart-btn'>
+            Explora
+          </Link>
         </div>
       </div>
     </div>
