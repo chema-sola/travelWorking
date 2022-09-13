@@ -2,15 +2,74 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    text-align: left;
 }
 
 
-.bg__about {
-
-    background-color: #ddd;
+.title {
+    text-align: center;
 }
+
+.aboutme__text {
+    margin: auto;
+    width: 40%;
+}
+
+.aboutme__img{
+    margin: auto;
+    width: 50%;
+}
+
+
+
+@media screen and (max-width: 980px) {
+    .about__img2 {
+        width: 50%;
+        height: 50%;
+        
+    }
+
+    .box-aboutme{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .box-aboutme2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .about__img {
     display: block;
-    width: 200px;
-    height: 200px;
+    width: 50%;
+    height: auto;
 }
+
+.about__img1 {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.box-aboutme2 {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: unset;
+    text-align: left;
+    
+}
+
+
+.text2 {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.bg__about {
+   background-color: #ddd;
+}
+
