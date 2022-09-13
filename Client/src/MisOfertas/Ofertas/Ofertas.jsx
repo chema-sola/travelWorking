@@ -1,20 +1,12 @@
-import { IoCartOutline, IoSyncOutline, IoTrashOutline } from 'react-icons/io5'
-import { AiOutlineEdit } from 'react-icons/ai'
+import { IoTrashOutline } from 'react-icons/io5'
+import { AiOutlineEdit, AiOutlineEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useSubstring } from '../../hooks'
 
 import './candidatura.css'
 
 export const Ofertas = ({ oferta }) => {
-  const {
-    disponibilidadinicial,
-    disponibilidadfinal,
-    residencia,
-    horasdia,
-    titulo,
-    id,
-    TrabajosClientes: trabajosCliente,
-  } = oferta
+  const { residencia, titulo, id, TrabajosClientes: trabajosCliente } = oferta
 
   const newTitulo = useSubstring(titulo, 30)
   return (
@@ -38,9 +30,9 @@ export const Ofertas = ({ oferta }) => {
         </div>
       </div>
       <div className='candidatura__right'>
-        <button className='product-btn product-cart-btn'>
-          <IoCartOutline height={'2rem'} />
-        </button>
+        <Link to={`/private/miOferta/view/${id}`} className='product-btn product-cart-btn'>
+          <AiOutlineEye height={'2rem'} />
+        </Link>
         <Link style={{ color: 'inherit' }} to={`/private/edit/${id}`} className='product-btn product-update-btn'>
           <AiOutlineEdit height={'2rem'} />
         </Link>
