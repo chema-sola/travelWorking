@@ -1,7 +1,6 @@
 import './MiPerfil.css'
 import { Link } from 'react-router-dom'
 
-
 export const MiPerfil = ({ user }) => {
   return (
     <>
@@ -81,23 +80,16 @@ export const MiPerfil = ({ user }) => {
                 </div>
               </div>
             </div>
-
-            
           </div>
           <div className='box__title'>
-          <Link to='/ofertas' className='button_mostrarMas'>
-            Editar
-          </Link>
-        </div>
+            <Link to={`/editPerfil/${user.id}`} className='button_mostrarMas'>
+              Editar
+            </Link>
+          </div>
         </div>
       </div>
     </>
   )
 }
 
-
-/* 
-
-        <div>{user?.id ? <pre>{JSON.stringify(user, null, 3)}</pre> : <p>Loading...</p>}</div>
-
-*/
+//                                <Link to={`${path}/editPerfil/${user.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
