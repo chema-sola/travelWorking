@@ -7,7 +7,6 @@ import { useEffect } from 'react'
 import { useTrabajos } from './hooks/useTrabajosStore'
 import Footer from './pages/Footer'
 
-import 'react-image-lightbox/style.css'
 
 function App() {
   const [idioma, setIdioma] = useState(0)
