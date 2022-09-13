@@ -23,12 +23,15 @@ export const Menu = () => {
               {'Mi perfil'}
             </Link>
           )}
-          <Link to={`/perfil/2`} className='nav-link'>
-            {'No es mi perfil'}
-          </Link>
           {user.id && (
-            <Link to={`/candidaturas/${user.id}`} className='nav-link'>
+            <Link to={`/private/candidaturas/${user.id}`} className='nav-link'>
               {'Mis candidaturas'}
+            </Link>
+          )}
+
+          {user.id && (
+            <Link to={`/ofertas/${user.id}`} className='nav-link'>
+              {'Mis ofertas'}
             </Link>
           )}
           <Nav className='justify-content-end' style={{ width: '100%' }}>
@@ -36,7 +39,7 @@ export const Menu = () => {
               {user.id ? (
                 <p>{user.nombre}</p>
               ) : (
-                <Link to='/login' className='nav-link'>
+                <Link to='/auth/login' className='nav-link'>
                   {'Login'}
                 </Link>
               )}

@@ -14,6 +14,8 @@ export const useAuthStore = () => {
       const resp = await trabajosApi('/clientes/login', { email, password }, 'POST')
       const { data } = await resp.json()
       dispatch(onLogin(data))
+
+      localStorage.setItem('user', JSON.stringify({ email: email, password: password }))
     } catch (error) {
       console.log(error)
       dispatch(onLogOut())

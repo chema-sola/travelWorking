@@ -16,7 +16,6 @@ export const Ofertadetalle = () => {
     setActiveTrabajo(id)
   }, [trabajos, isLoading])
 
-  console.log(!!trabajoActive)
   return (
     <Container className='detalles__container'>
       <div className='containerdetalle'>
