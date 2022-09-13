@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Logo from './assets/img/LogoTravel.png'
+import { useAuthStore } from './hooks/useAuthStore'
 
 export const Menu = () => {
   const { user } = useSelector((state) => state.auth)
-
+  const { logOut } = useAuthStore()
   return (
     <Navbar expand='lg' style={{ backgroundColor: '#e3f2fd' }}>
       <Container className='menu'>
@@ -34,6 +35,7 @@ export const Menu = () => {
               {'Mis ofertas'}
             </Link>
           )}
+          {user.id && <Button onClick={logOut}>{'Log out'}</Button>}
           <Nav className='justify-content-end' style={{ width: '100%' }}>
             <Navbar.Brand>
               {user.id ? (

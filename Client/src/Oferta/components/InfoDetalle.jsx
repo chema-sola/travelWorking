@@ -1,6 +1,7 @@
 import { BiClipboard } from 'react-icons/bi'
 import { FaHandsHelping, FaChild, FaHandHoldingHeart, FaComments, FaHouseUser, FaBed, FaClock } from 'react-icons/fa'
 import { IoIosSchool } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 import { Gallery } from './gallery'
 
@@ -18,7 +19,23 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
         {user.id === trabajoActive.ClienteId ? (
           <button className='button'>Editar</button>
         ) : (
-          <button className='button'>Inscribirme</button>
+          <>
+            {!user.id ? (
+              <Link to='/auth/login' className='button'>
+                Inscribirme
+              </Link>
+            ) : (
+              <>
+                {user.host === 0 ? (
+                  <button className='button'>Inscribirme</button>
+                ) : (
+                  <button className='disbaled_button' disabled={true} style={{ opacity: 0.6 }}>
+                    Inscribirme
+                  </button>
+                )}
+              </>
+            )}
+          </>
         )}
       </div>
 

@@ -3,7 +3,6 @@ import { AiOutlineStop, AiOutlineCheck } from 'react-icons/ai'
 
 import './estadoCandidaturas.css'
 export const EstadoCandidaturas = ({ status }) => {
-  console.log(status)
   return (
     <>
       {status === 'Aceptado' && (

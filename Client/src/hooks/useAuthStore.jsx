@@ -22,6 +22,11 @@ export const useAuthStore = () => {
     }
   }
 
+  const logOut = () => {
+    dispatch(onLogOut())
+    localStorage.removeItem('user')
+  }
+
   const startGettingInfoProfile = async (id) => {
     try {
       const resp = await trabajosApi(`/clientes/${id}`)
@@ -38,5 +43,6 @@ export const useAuthStore = () => {
     startLogin,
     startGettingInfoProfile,
     activeUser,
+    logOut,
   }
 }
