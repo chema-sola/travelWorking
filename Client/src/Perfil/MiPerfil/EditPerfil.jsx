@@ -1,12 +1,14 @@
-import './MiPerfil.css'
+//import './EditPErfil.css'
 import { Link } from 'react-router-dom'
+import { useAuthStore } from '../../hooks'
 
-export const MiPerfil = ({ user }) => {
+export const EditPerfil = () => {
+  const {user} = useAuthStore()
   return (
     <>
       <div className='container'>
         <div className='box'>
-          <p className='h-dash'>Tu Perfil</p>
+          <p className='h-dash'>Editar Tu Perfil</p>
           <p className='fst-italic textmuted'>Tu información esta en publico</p>
           <div className='row mx-0 mt-2'>
             <div className='col-md-4 p-0 border-end'>
@@ -18,11 +20,10 @@ export const MiPerfil = ({ user }) => {
             <div className='col-md-8 p-0'>
               <div className='viewbox'>
                 <p className=''>Descripción</p>
-                <p className='textmuted mb-2'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem magnam dignissimos tenetur similique
-                  sit quas illum. Veniam magnam quisquam ipsam a totam nam. Molestiae praesentium molestias mollitia
-                  voluptatibus autem sint.
-                </p>
+                <div class='input-group'>
+                  <span class='input-group-text'>With textarea</span>
+                  <textarea class='form-control' aria-label='With textarea'></textarea>
+                </div>
               </div>
             </div>
           </div>
@@ -82,8 +83,8 @@ export const MiPerfil = ({ user }) => {
             </div>
           </div>
           <div className='box__title'>
-            <Link to={`/editPerfil/${user.id}`} className='button_mostrarMas'>
-              Editar
+            <Link to='/ofertas' className='button_mostrarMas'>
+              Guardar
             </Link>
           </div>
         </div>
@@ -92,4 +93,3 @@ export const MiPerfil = ({ user }) => {
   )
 }
 
-//                                <Link to={`${path}/editPerfil/${user.id}`} className="btn btn-sm btn-primary mr-1">Edit</Link>
