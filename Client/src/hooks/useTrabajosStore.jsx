@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { trabajosApi } from '../helpers/fetch'
-import { loadAllTrabajos, setActivo, setLoading } from '../store/trabajo'
+import { onLoadMisTrabajos } from '../store/auth/authSlice'
+import { loadAllTrabajos, setActivo } from '../store/trabajo'
 
 export const useTrabajos = () => {
   const dispatch = useDispatch()

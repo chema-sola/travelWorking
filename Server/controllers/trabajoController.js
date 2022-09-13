@@ -269,12 +269,3 @@ export const getTrabajosCreadosPorMi = async (req, res = response) => {
     })
   }
 }
-
-/**
- * 
- * 
- * SELECT `Trabajos`.`id`, `Trabajos`.`estrellas`, `Trabajos`.`disponibilidadinicial`, `Trabajos`.`disponibilidadfinal`, `Trabajos`.`descripcion`, `Trabajos`.`ayuda`, `Trabajos`.`idioma`, `Trabajos`.`residencia`, `Trabajos`.`otros`, `Trabajos`.`viajerosMinimo`, `Trabajos`.`horasdia`, `Trabajos`.`ClienteId`, `Trabajos`.`titulo`, `TrabajosClientes`.`TrabajoId` AS `TrabajosClientes.TrabajoId`, `TrabajosClientes`.`ClienteId` AS `TrabajosClientes.ClienteId`, `TrabajosClientes`.`estado` AS `TrabajosClientes.estado`, `Cliente`.`id` AS `Cliente.id`, `Cliente`.`dni` AS `Cliente.dni`, `Cliente`.`email` AS `Cliente.email`, `Cliente`.`nombre` AS `Cliente.nombre`, `Cliente`.`apellidos` AS `Cliente.apellidos`, `Cliente`.`edad` AS `Cliente.edad`, `Cliente`.`telefono` AS `Cliente.telefono`, `Cliente`.`foto` AS `Cliente.foto`, `Cliente`.`password` AS `Cliente.password`, `Cliente`.`pais` AS `Cliente.pais`, `Cliente`.`ciudad` AS `Cliente.ciudad`, `Cliente`.`cpostal` AS `Cliente.cpostal`, `Cliente`.`direccion` AS `Cliente.direccion`, `Cliente`.`rol` AS `Cliente.rol`, `Cliente`.`idioma` AS `Cliente.idioma`, 
-`Cliente`.`descripcion` AS `Cliente.descripcion` FROM `Trabajos` AS `Trabajos` LEFT OUTER JOIN `TrabajosClientes` AS `TrabajosClientes` ON `Trabajos`.`id` = `TrabajosClientes`.`TrabajoId` LEFT OUTER JOIN 
-`Clientes` AS `Cliente` ON `Trabajos`.`ClienteId` = `Cliente`.`id` WHERE `Trabajos`.`ClienteId` = '2';
-
- */

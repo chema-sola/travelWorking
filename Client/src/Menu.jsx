@@ -25,16 +25,19 @@ export const Menu = () => {
             </Link>
           )}
           {user.id && (
-            <Link to={`/private/candidaturas/${user.id}`} className='nav-link'>
-              {'Mis candidaturas'}
-            </Link>
+            <>
+              {user.isHost === 1 ? (
+                <Link to={`/private/ofertas/${user.id}`} className='nav-link'>
+                  {'Mis ofertas'}
+                </Link>
+              ) : (
+                <Link to={`/private/candidaturas/${user.id}`} className='nav-link'>
+                  {'Mis candidaturas'}
+                </Link>
+              )}
+            </>
           )}
 
-          {user.id && (
-            <Link to={`/ofertas/${user.id}`} className='nav-link'>
-              {'Mis ofertas'}
-            </Link>
-          )}
           {user.id && <Button onClick={logOut}>{'Log out'}</Button>}
           <Nav className='justify-content-end' style={{ width: '100%' }}>
             <Navbar.Brand>

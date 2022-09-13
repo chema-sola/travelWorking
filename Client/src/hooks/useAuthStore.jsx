@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { onCheking, onLogOut, onLogin, onActiveUser } from '../store/auth/authSlice'
+import { onCheking, onLogOut, onLogin, onActiveUser, onLoadMisTrabajos } from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
 
@@ -37,6 +37,17 @@ export const useAuthStore = () => {
     }
   }
 
+  const startLoadAllMisTrabajos = async (id) => {
+    try {
+      const response = await trabajosApi(`/trabajo/misTrabajos/${id}`)
+      const { data } = await response.json()
+      dispatch(onLoadMisTrabajos(data))
+    } catch (error) {
+      console.log('Error al cargar los datos')
+      console.log(error)
+    }
+  }
+
   return {
     status,
     user,
@@ -44,5 +55,6 @@ export const useAuthStore = () => {
     startGettingInfoProfile,
     activeUser,
     logOut,
+    startLoadAllMisTrabajos,
   }
 }

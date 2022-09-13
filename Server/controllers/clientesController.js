@@ -39,21 +39,23 @@ export const loginCliente = async (req, res = response) => {
       })
     }
 
-    const trabajoCliente = await TrabajosClientes.findAll({
-      where: { ClienteId: user.id },
-      include: [{ model: Trabajo }],
-    })
-
     let trabajos = []
 
-    trabajoCliente.forEach((element, i) => {
-      let { Trabajo: trabajo, estado, TrabajoId: trabajoId } = element
-      trabajos.push(trabajo)
-      trabajos[i].dataValues.estado = estado
-      trabajos[i].dataValues.trabajoId = trabajoId
-    })
+    if (user.dataValues.isHost === 0) {
+      const trabajoCliente = await TrabajosClientes.findAll({
+        where: { ClienteId: user.id },
+        include: [{ model: Trabajo }],
+      })
 
-    user.dataValues.candidaturas = trabajos
+      trabajoCliente.forEach((element, i) => {
+        let { Trabajo: trabajo, estado, TrabajoId: trabajoId } = element
+        trabajos.push(trabajo)
+        trabajos[i].dataValues.estado = estado
+        trabajos[i].dataValues.trabajoId = trabajoId
+      })
+
+      user.dataValues.candidaturas = trabajos
+    }
 
     return res.status(200).json({
       ok: true,
