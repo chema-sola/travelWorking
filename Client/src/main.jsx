@@ -14,7 +14,7 @@ import App from './App'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import { Cartas } from '../src/Cartas/Cartas'
-import Ofertadetalle from './Oferta/Ofertadetalle'
+import { Ofertadetalle } from './Oferta/Ofertadetalle'
 import Formulario from './pages/Formulario'
 import { Perfil } from './Perfil/Perfil'
 import { Candidaturas } from './Candidaturas/Candidaturas'
@@ -31,6 +31,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/ofertas' element={<Cartas />} />
             <Route path='/register' element={<Formulario />} />
             <Route path='/perfil/:id' element={<Perfil />} />
+            <Route path='/candidaturas/:id' element={<Candidaturas />} />
             <Route path='/ofertadetallada/:id' element={<Ofertadetalle />} />
             <Route path='*' element={<Home />} />
           </Route>
