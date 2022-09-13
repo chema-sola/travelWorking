@@ -23,7 +23,11 @@ export const authSlice = createSlice({
     onActiveUser: (state, { payload }) => {
       state.activeUser = payload
     },
+    onUpdateUser: (state, { payload }) => {
+      // state.activeUser = { ...state.activeUser, ...payload }
+      state.user = { ...state.user, ...payload }
+    },
   },
 })
 
-export const { onCheking, onLogOut, onLogin, onActiveUser } = authSlice.actions
+export const { onCheking, onLogOut, onLogin, onActiveUser, onUpdateUser } = authSlice.actions

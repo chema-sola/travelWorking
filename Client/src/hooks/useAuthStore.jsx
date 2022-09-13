@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { onCheking, onLogOut, onLogin, onActiveUser } from '../store/auth/authSlice'
+import { onCheking, onLogOut, onLogin, onActiveUser, onUpdateUser } from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
 
@@ -20,6 +20,16 @@ export const useAuthStore = () => {
     }
   }
 
+  const startUpdatingPerfil = async (user) => {
+    try {
+      const resp = await trabajosApi(`/clientes/${user.id}`, user, 'PUT')
+      const { data } = await resp.json()
+      dispatch(onUpdateUser(data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const startGettingInfoProfile = async (id) => {
     try {
       const resp = await trabajosApi(`/clientes/${id}`)
@@ -36,5 +46,6 @@ export const useAuthStore = () => {
     startLogin,
     startGettingInfoProfile,
     activeUser,
+    startUpdatingPerfil,
   }
 }
