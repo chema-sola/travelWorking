@@ -31,14 +31,14 @@ function Home() {
         <Cartas size={4} />
 
         <div className='box__title'>
-          <Link to='/ofertas' className='button_mostrarMas'>
-            Mostras mas
-          </Link>
+          <button to='/ofertas' className='button'>
+            <Link className='boton_a' to='/ofertas'>
+              Mostras mas
+            </Link>
+          </button>
         </div>
       </div>
     </>
-
-    
   )
 }
 
