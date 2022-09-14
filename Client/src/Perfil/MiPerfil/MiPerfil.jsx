@@ -82,7 +82,7 @@ export const MiPerfil = ({ user }) => {
             </div>
           </div>
           <div className='box__title'>
-            <Link to={`/editPerfil/${user.id}`} className='button_mostrarMas'>
+            <Link to={`/private/editPerfil/${user.id}`} className='button_mostrarMas'>
               Editar
             </Link>
           </div>

@@ -1,6 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { onCheking, onLogOut, onLogin, onActiveUser, onUpdateUser, onLoadMisTrabajos } from '../store/auth/authSlice'
+import {
+  onCheking,
+  onLogOut,
+  onLogin,
+  onActiveUser,
+  onUpdateUser,
+  onLoadMisTrabajos,
+  deleteOneTrabajoMio,
+} from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
 
@@ -15,7 +23,7 @@ export const useAuthStore = () => {
       const { data } = await resp.json()
       dispatch(onLogin(data))
 
-      localStorage.setItem('user', JSON.stringify({ email: email, password: password }))
+      localStorage.setItem('user', JSON.stringify({ email: email, password: password, id: data.id }))
     } catch (error) {
       console.log(error)
       dispatch(onLogOut())
@@ -58,6 +66,16 @@ export const useAuthStore = () => {
     }
   }
 
+  const startDeletingOneTrabajoMio = async (id) => {
+    try {
+      await trabajosApi(`/trabajo/${id}`, { id }, 'DELETE')
+      dispatch(deleteOneTrabajoMio(id))
+    } catch (error) {
+      console.log('Error al cargar los datos')
+      console.log(error)
+    }
+  }
+
   return {
     status,
     user,
@@ -67,5 +85,6 @@ export const useAuthStore = () => {
     startUpdatingPerfil,
     logOut,
     startLoadAllMisTrabajos,
+    startDeletingOneTrabajoMio,
   }
 }

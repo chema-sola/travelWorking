@@ -161,7 +161,7 @@ export const deleteTrabajo = async (req, res = response) => {
   try {
     const { id } = req.params
     const trabajo = await Trabajo.findOne({ where: { id } })
-
+    console.log(id, '<-------------')
     if (!trabajo) {
       return res.status(404).json({
         ok: false,

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { trabajosApi } from '../helpers/fetch'
-import { onLoadMisTrabajos } from '../store/auth/authSlice'
-import { loadAllTrabajos, setActivo } from '../store/trabajo'
+import { addNewJob, loadAllTrabajos, setActivo } from '../store/trabajo'
 
 export const useTrabajos = () => {
   const dispatch = useDispatch()
@@ -29,6 +28,18 @@ export const useTrabajos = () => {
     }
   }
 
+  const startCreateNewTrabajo = async (trabajo) => {
+    try {
+      const response = await trabajosApi(`/trabajo`, trabajo, 'POST')
+      const { data } = await response.json()
+      dispatch(addNewJob(data))
+      console.log(data)
+    } catch (error) {
+      console.log('Error al guardar')
+      console.log(error)
+    }
+  }
+
   const startLoadAllTrabajosInscritos = async (clientId) => {
     try {
       const response = await trabajosApi(`/trabajo/${clientId}/candidaturas`)
@@ -45,5 +56,6 @@ export const useTrabajos = () => {
     trabajoActive,
     setActiveTrabajo,
     isLoading,
+    startCreateNewTrabajo,
   }
 }

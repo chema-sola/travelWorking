@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useState } from 'react'
 import UseContext from './UseContext'
 import traductor from './translate'
 import { Menu } from './Menu'
@@ -14,13 +13,16 @@ import { AppRouter } from './router/AppRouter'
 function App() {
   const [idioma, setIdioma] = useState(0)
   const traduce = (etiqueta) => traductor[etiqueta][idioma]
-  const { startLogin } = useAuthStore()
+  const { startLogin, startLoadAllMisTrabajos } = useAuthStore()
 
   const { startLoadAllNotes } = useTrabajos()
   useEffect(() => {
     startLoadAllNotes()
-    if (localStorage.getItem('user')) startLogin(JSON.parse(localStorage.getItem('user')))
-  }, [])
+    if (localStorage.getItem('user')) {
+      startLogin(JSON.parse(localStorage.getItem('user')))
+      startLoadAllMisTrabajos(JSON.parse(localStorage.getItem('user')).id)
+    }
+  }, [localStorage.getItem('user')])
 
   return (
     <UseContext.Provider value={{ traduce, idioma }}>

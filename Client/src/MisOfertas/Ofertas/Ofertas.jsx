@@ -1,14 +1,20 @@
 import { IoTrashOutline } from 'react-icons/io5'
 import { AiOutlineEdit, AiOutlineEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import { useSubstring } from '../../hooks'
+import { useAuthStore, useSubstring } from '../../hooks'
 
 import './candidatura.css'
 
 export const Ofertas = ({ oferta }) => {
+  const { startDeletingOneTrabajoMio } = useAuthStore()
   const { residencia, titulo, id, TrabajosClientes: trabajosCliente } = oferta
 
   const newTitulo = useSubstring(titulo, 30)
+
+  const handleDeleteOneTrabajo = () => {
+    startDeletingOneTrabajoMio(id)
+  }
+
   return (
     <div className='candidatura'>
       <div className='candidatura__left'>
@@ -36,7 +42,7 @@ export const Ofertas = ({ oferta }) => {
         <Link style={{ color: 'inherit' }} to={`/private/edit/${id}`} className='product-btn product-update-btn'>
           <AiOutlineEdit height={'2rem'} />
         </Link>
-        <button className='product-btn product-delete-btn'>
+        <button onClick={handleDeleteOneTrabajo} className='product-btn product-delete-btn'>
           <IoTrashOutline height={'2rem'} />
         </button>
       </div>

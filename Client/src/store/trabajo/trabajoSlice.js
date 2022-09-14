@@ -13,6 +13,10 @@ export const trabajoSlice = createSlice({
       state.trabajos = action.payload
       state.isLoading = false
     },
+    addNewJob: (state, { payload }) => {
+      state.trabajos = [...state.trabajos, payload]
+      state.isLoading = false
+    },
     setActivo: (state, action) => {
       // state.trabajoActive = state.trabajos.filter((trabajo) => trabajo.id === action.payload.id)
       state.trabajoActive = [action.payload]
@@ -23,4 +27,4 @@ export const trabajoSlice = createSlice({
   },
 })
 
-export const { loadAllTrabajos, setActivo, setLoading } = trabajoSlice.actions
+export const { loadAllTrabajos, setActivo, setLoading, addNewJob } = trabajoSlice.actions
