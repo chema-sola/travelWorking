@@ -12,6 +12,7 @@ export const PublicRoutes = () => {
       <Route path='/ofertas' element={<Cartas />} />
       <Route path='/perfil/:id' element={<Perfil />} />
       <Route path='/ofertadetallada/:id' element={<Ofertadetalle />} />
+      {/* <Route path='/' element={<Perfil />} /> */}
       <Route path='*' element={<Home />} />
     </Routes>
   )
