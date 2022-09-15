@@ -56,7 +56,7 @@ function Login() {
               <div className='field padding-bottom--24'>
                 <input type='submit' name='submit' value='Entrar' />
               </div>
-              <Link to='/register'>¿Aún no tienes cuenta?</Link>
+              <Link to='/auth/register'>¿Aún no tienes cuenta?</Link>
             </form>
           </div>
         </div>
