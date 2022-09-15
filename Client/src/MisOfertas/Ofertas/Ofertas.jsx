@@ -1,8 +1,10 @@
-import { IoTrashOutline } from 'react-icons/io5'
-import { IoMdPerson } from 'react-icons/io'
-import { AiOutlineEdit, AiOutlineEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+
 import { useAuthStore, useSubstring } from '../../hooks'
+
+import { IoTrashOutline } from 'react-icons/io5'
+import { BsPerson } from 'react-icons/bs'
+import { AiOutlineEdit } from 'react-icons/ai'
 
 import './candidatura.css'
 
@@ -26,7 +28,9 @@ export const Ofertas = ({ oferta }) => {
         />
         <div className='candidatura__text_wapper'>
           <div>
-            <h2 className='candidatura__title'>{newTitulo}</h2>
+            <Link to={`/ofertadetallada/${id}`} className='candidatura__title'>
+              {newTitulo}
+            </Link>
           </div>
           <div>
             <p className='candidatura__country'>{residencia}</p>
@@ -38,9 +42,9 @@ export const Ofertas = ({ oferta }) => {
       </div>
       <div className='candidatura__right'>
         <Link to={`/private/miOferta/view/${id}`} className='product-btn product-cart-btn'>
-          <AiOutlineEye height={'2rem'} />
+          <BsPerson height={'2rem'} />
         </Link>
-        <Link to={`/private/edit/${id}`} className='product-btn product-update-btn'>
+        <Link to={`/private/editMiOferta/${id}`} className='product-btn product-update-btn'>
           <AiOutlineEdit height={'2rem'} />
         </Link>
         <button onClick={handleDeleteOneTrabajo} className='product-btn product-delete-btn'>
