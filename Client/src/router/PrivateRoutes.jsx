@@ -11,7 +11,7 @@ export const PrivateRoutes = () => {
       <Route path='/ofertas/:id' element={<MisOfertas />} />
       <Route path='/miOferta/create' element={<CreateOferta />} />
       <Route path='/editPerfil/:id' element={<EditPerfil />} />
-      {/* <Route path='*' element={<Navigate to='/' />} /> */}
+      <Route path='/*' element={<Navigate to='/' />} />
     </Routes>
   )
 }

@@ -1,4 +1,5 @@
 import { IoTrashOutline } from 'react-icons/io5'
+import { IoMdPerson } from 'react-icons/io'
 import { AiOutlineEdit, AiOutlineEye } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { useAuthStore, useSubstring } from '../../hooks'
@@ -39,7 +40,7 @@ export const Ofertas = ({ oferta }) => {
         <Link to={`/private/miOferta/view/${id}`} className='product-btn product-cart-btn'>
           <AiOutlineEye height={'2rem'} />
         </Link>
-        <Link style={{ color: 'inherit' }} to={`/private/edit/${id}`} className='product-btn product-update-btn'>
+        <Link to={`/private/edit/${id}`} className='product-btn product-update-btn'>
           <AiOutlineEdit height={'2rem'} />
         </Link>
         <button onClick={handleDeleteOneTrabajo} className='product-btn product-delete-btn'>

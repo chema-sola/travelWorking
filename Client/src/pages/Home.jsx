@@ -1,4 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel'
+import { Container } from 'react-bootstrap'
 
 import { Cartas } from '../Cartas/Cartas'
 
@@ -28,8 +29,9 @@ function Home() {
       </div>
       <div className='box__oferta'>
         <h1 className='box__title'> Encuentre tu Anfitrion </h1>
-        <Cartas size={4} />
-
+        <Container>
+          <Cartas size={4} />
+        </Container>
         <div className='box__title'>
           <Link to='/ofertas' className='button_mostrarMas'>
             Mostras mas
@@ -37,8 +39,6 @@ function Home() {
         </div>
       </div>
     </>
-
-    
   )
 }
 
