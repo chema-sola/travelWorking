@@ -27,13 +27,13 @@ function Home() {
         </Carousel>
       </div>
       <div className='box__oferta'>
-        <h1 className='box__title'> Encuentre tu Anfitrion </h1>
+        <h1 className='box__title'> Encuentra tu oportunidad </h1>
         <Cartas size={4} />
 
         <div className='box__title'>
           <button to='/ofertas' className='button'>
             <Link className='boton_a' to='/ofertas'>
-              Mostras mas
+              Mostrar mas
             </Link>
           </button>
         </div>
