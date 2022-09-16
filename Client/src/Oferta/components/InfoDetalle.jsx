@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import parse from 'html-react-parser'
 
 import { BiClipboard } from 'react-icons/bi'
-import { BsInfoSquare } from 'react-icons/bs'
+import { BsInfoCircleFill } from 'react-icons/bs'
 import { FaHandsHelping, FaChild, FaComments, FaHouseUser, FaBed, FaClock } from 'react-icons/fa'
 import { IoIosSchool } from 'react-icons/io'
 
@@ -106,7 +106,7 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
 
       <div className='detalles__texto'>
         <div className='detalles__titulo'>
-          <BsInfoSquare />
+          <BsInfoCircleFill />
           <h4>Otros</h4>
         </div>
         {parse(otros)}
