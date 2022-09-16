@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import logo from '../assets/img/LogoTravel.png'
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 import './footer.css'
 
@@ -46,9 +48,8 @@ function Footer() {
             las personas.{' '}
           </p>
         </div>
-      </div>
+      </footer>
     </div>
-  </div>
-)
-
+  )
+}
 export default Footer

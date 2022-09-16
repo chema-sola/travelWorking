@@ -8,11 +8,14 @@ import { ActualizarOfertaFormulario } from './Components'
 import 'react-quill/dist/quill.snow.css'
 
 export const ActualizarOferta = () => {
-  const { trabajoActive, isLoading, setActiveTrabajo } = useTrabajos()
+  const { trabajoActive, isLoading, setActiveTrabajo, setSyncActiveTrabajo } = useTrabajos()
   const { id } = useParams()
 
   useEffect(() => {
-    setActiveTrabajo(id)
+    setSyncActiveTrabajo(id)
   }, [id])
-  return <>{isLoading ? <p>Loading...</p> : <ActualizarOfertaFormulario trabajoActive={trabajoActive[0]} />}</>
+
+  return (
+    <>{trabajoActive === null ? <p>Loading...</p> : <ActualizarOfertaFormulario trabajoActive={trabajoActive[0]} />}</>
+  )
 }

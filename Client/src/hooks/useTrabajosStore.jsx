@@ -1,6 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { trabajosApi } from '../helpers/fetch'
-import { addNewJob, loadAllTrabajos, setActivo, setFinishLoading, setLoading, setUpdateTrabajo } from '../store/trabajo'
+import {
+  addNewJob,
+  loadAllTrabajos,
+  setActivo,
+  setFinishLoading,
+  setLoading,
+  setSyncActivo,
+  setUpdateTrabajo,
+} from '../store/trabajo'
 
 export const useTrabajos = () => {
   const dispatch = useDispatch()
@@ -31,6 +39,12 @@ export const useTrabajos = () => {
     }
   }
 
+  const setSyncActiveTrabajo = (id) => {
+    dispatch(setLoading())
+    console.log('dispatching ---->' + id)
+    dispatch(setSyncActivo(Number(id)))
+  }
+
   const startCreateNewTrabajo = async (trabajo) => {
     try {
       const response = await trabajosApi(`/trabajo`, trabajo, 'POST')
@@ -57,6 +71,10 @@ export const useTrabajos = () => {
     }
   }
 
+  const startSetLoading = () => {
+    dispatch(setLoading())
+  }
+
   const startLoadAllTrabajosInscritos = async (clientId) => {
     try {
       const response = await trabajosApi(`/trabajo/${clientId}/candidaturas`)
@@ -75,5 +93,7 @@ export const useTrabajos = () => {
     isLoading,
     startCreateNewTrabajo,
     startUpdateTrabajo,
+    setSyncActiveTrabajo,
+    startSetLoading,
   }
 }

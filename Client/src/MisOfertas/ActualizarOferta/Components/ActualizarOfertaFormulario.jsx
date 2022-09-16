@@ -8,6 +8,7 @@ import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstra
 import { useAuthStore, useForm, useTrabajos } from '../../../hooks'
 
 import 'react-quill/dist/quill.snow.css'
+import { useEffect } from 'react'
 
 export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
   const { user } = useAuthStore()
@@ -19,6 +20,11 @@ export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
   const [idioma, setIdioma] = useState(trabajoActive.idioma)
   const [otros, setOtros] = useState(trabajoActive.otros)
 
+  useEffect(() => {
+    setIdioma(trabajoActive.idioma)
+    setOtros(trabajoActive.otros)
+  }, [trabajoActive])
+
   const {
     disponibilidadinicial,
     disponibilidadfinal,
@@ -29,6 +35,8 @@ export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
     horasdia,
     titulo,
   } = formValues
+
+  console.log(trabajoActive.titulo)
 
   const handleSubmit = (e) => {
     e.preventDefault()

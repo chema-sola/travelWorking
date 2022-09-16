@@ -1,23 +1,42 @@
+import { Link, useParams } from 'react-router-dom'
+
+import parse from 'html-react-parser'
+
 import { BiClipboard } from 'react-icons/bi'
 import { FaHandsHelping, FaChild, FaHandHoldingHeart, FaComments, FaHouseUser, FaBed, FaClock } from 'react-icons/fa'
 import { IoIosSchool } from 'react-icons/io'
-import { Link } from 'react-router-dom'
 
 import { Gallery } from './gallery'
 
 export const InfoDetalle = ({ trabajoActive, user }) => {
+  const { id } = useParams()
+  const {
+    disponibilidadinicial,
+    disponibilidadfinal,
+    descripcion,
+    ayuda,
+    residencia,
+    viajerosMinimo,
+    horasdia,
+    titulo,
+    idioma,
+    otros,
+  } = trabajoActive
   return (
     <>
-      <h2>Mozo de almacén</h2>
+      <h2>{titulo}</h2>
       <div className='detalles__initialtext'>
         <ul>
-          <li>Madrid, España</li>
-          <li>Publicada el 7 de setiembre</li>
+          <li>{residencia}</li>
           <li>Experiencia mínima: no requerida</li>
-          <li>Durabilidad: 3 meses</li>
+          <li>
+            Durabilidad: {disponibilidadinicial} - {disponibilidadfinal}
+          </li>
         </ul>
         {user.id === trabajoActive.ClienteId ? (
-          <button className='button'>Editar</button>
+          <Link className='button' to={`/private/editMiOferta/${id}`}>
+            Editar
+          </Link>
         ) : (
           <>
             {!user.id ? (
@@ -44,25 +63,14 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
           <BiClipboard />
           <h4>Descripción</h4>
         </div>
-        <p>
-          Hola, Bienvenidos a Japón ya nuestra casa. Daisuke es de Japón y Hila es de Israel. En primer lugar, gracias
-          por leer nuestra página y le deseamos un gran momento en Japón.
-          -------------------------------------------------- ---------- 27.4.2020 desafortunadamente Todo está cancelado
-          debido al coronavirus. así que no podemos hospedar a nadie, así que por favor no nos escribas en este momento.
-          mantente a salvo y los mejores deseos Dai y Hila (solo para noviembre podemos aceptar voluntarios)
-          --------------------------------- ----------------------------------------- Vivimos en un pueblo granjero
-          japonés tradicional. ambos hablamos inglés. Vivimos entre Tokio y Kioto rodeados de montañas, bosques de
-          bambú, ríos y campos de té verde. Vivimos en una casa que renovamos de fábrica de té verde a un hogar
-          agradable y tenemos una habitación adicional para trabajar. a nuestro alrededor tenemos bosques de bambú que
-          cultivamos. por favor lea bien nuestro perfil antes de escribirnos, muchas gracias.
-        </p>
+        <p>{descripcion}</p>
       </div>
       <div className='detalles__texto'>
         <div className='detalles__titulo'>
           <FaHandsHelping />
           <h4>Tipos de ayuda y oportunidad de aprendizaje</h4>
         </div>
-        <p>Farmstay help Ayuda en la casa</p>
+        <p>{ayuda}</p>
       </div>
       <div className='detalles__texto'>
         <div className='detalles__titulo'>
@@ -114,11 +122,7 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
           <FaComments />
           <h4>Idiomas hablados</h4>
         </div>
-        <ul>
-          <li>Inglés</li>
-          <li>Alemán</li>
-          <li>Ruso</li>
-        </ul>
+        {parse(idioma)}
       </div>
       <div className='detalles__texto'>
         <div className='detalles__titulo'>
@@ -141,14 +145,14 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
           <FaBed />
           <h4>Cuantas personas pueden quedarse</h4>
         </div>
-        <p>Dos</p>
+        <p>{viajerosMinimo}</p>
       </div>
       <div className='detalles__texto'>
         <div className='detalles__titulo'>
           <FaClock />
           <h4>Horario de trabajo</h4>
         </div>
-        <p>De lunes a jueves 5 horas diarias, a pactar horario</p>
+        <p>{horasdia}</p>
       </div>
       <Gallery />
     </>

@@ -22,6 +22,10 @@ export const trabajoSlice = createSlice({
       state.trabajoActive = [action.payload]
       state.isLoading = false
     },
+    setSyncActivo: (state, { payload }) => {
+      state.trabajoActive = state.trabajos.filter((trabajo) => trabajo.id === payload)
+      state.isLoading = false
+    },
     setUpdateTrabajo: (state, { payload }) => {
       state.trabajos = state.trabajos.map((trabajo) =>
         trabajo.id === payload.id ? { ...trabajo, ...payload } : trabajo
@@ -37,5 +41,5 @@ export const trabajoSlice = createSlice({
   },
 })
 
-export const { loadAllTrabajos, setActivo, setLoading, addNewJob, setFinishLoading, setUpdateTrabajo } =
+export const { loadAllTrabajos, setActivo, setLoading, addNewJob, setFinishLoading, setUpdateTrabajo, setSyncActivo } =
   trabajoSlice.actions
