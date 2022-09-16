@@ -9,12 +9,13 @@ import 'react-quill/dist/quill.snow.css'
 import './Ofertadetalle.css'
 
 export const Ofertadetalle = () => {
-  const { setActiveTrabajo, trabajoActive, trabajos, isLoading } = useTrabajos()
+  const { setActiveTrabajo, trabajoActive, isLoading } = useTrabajos()
   const { user } = useAuthStore()
   const { id } = useParams()
+
   useEffect(() => {
     setActiveTrabajo(id)
-  }, [trabajos, isLoading])
+  }, [])
 
   return (
     <Container className='detalles__container'>
