@@ -41,7 +41,6 @@ export const useTrabajos = () => {
 
   const setSyncActiveTrabajo = (id) => {
     dispatch(setLoading())
-    console.log('dispatching ---->' + id)
     dispatch(setSyncActivo(Number(id)))
   }
 

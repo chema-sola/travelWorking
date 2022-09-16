@@ -81,6 +81,7 @@ export const createTrabajo = async (req, res = response) => {
       horasdia,
       ClienteId, // quien ha publicado la oferta
       titulo,
+      alojamiento,
     } = req.body
 
     if (new Date(disponibilidadinicial) >= new Date(disponibilidadfinal)) {
@@ -102,6 +103,7 @@ export const createTrabajo = async (req, res = response) => {
       horasdia,
       ClienteId,
       titulo,
+      alojamiento,
     })
 
     return res.status(200).json({

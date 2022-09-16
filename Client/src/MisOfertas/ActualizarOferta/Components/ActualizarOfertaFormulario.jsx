@@ -34,9 +34,8 @@ export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
     viajerosMinimo,
     horasdia,
     titulo,
+    alojamiento,
   } = formValues
-
-  console.log(trabajoActive.titulo)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -145,7 +144,19 @@ export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
             className='mb-3'
           />
         </FloatingLabel>
+        <FloatingLabel label='Alojamiento'>
+          <Form.Control
+            as='textarea'
+            name='alojamiento'
+            placeholder='alojamiento'
+            style={{ height: '100px' }}
+            className='mb-3'
+            value={alojamiento}
+            onChange={onChange}
+          />
+        </FloatingLabel>
         <Form.Label>Idioma</Form.Label>
+
         <ReactQuill theme='snow' className='mb-3' onChange={setIdioma} value={idioma} />
 
         <Form.Label>Otros</Form.Label>

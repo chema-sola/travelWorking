@@ -16,6 +16,7 @@ export const Trabajo = loadSequelize.define(
     otros: DataTypes.TEXT(),
     viajerosMinimo: DataTypes.TEXT(),
     horasdia: DataTypes.TEXT(),
+    alojamiento: DataTypes.TEXT(),
     ClienteId: {
       type: DataTypes.INTEGER,
       field: 'ClienteId',
