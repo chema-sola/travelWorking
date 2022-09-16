@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import Logo from './assets/img/LogoTravel.png'
+import { useAuthStore } from './hooks/useAuthStore'
 
 export const Menu = () => {
   const { user } = useSelector((state) => state.auth)

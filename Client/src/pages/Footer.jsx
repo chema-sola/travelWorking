@@ -8,11 +8,21 @@ const Footer = () => (
       <div className='footer__box'>
         <div className='footer__title'>TravelWorking</div>
         <div className='footer__content'>
-          <Link to='/'><p>Principal</p></Link>
-          <Link to='/ofertas'><p>Ofertas</p></Link>
-          <Link to='/login'><p>Login</p></Link>
-          <Link to='/register'><p>Registro</p></Link>
-          
+          <Link to='/'>
+            <p>Principal</p>
+          </Link>
+          <Link to='/auth/ofertas'>
+            <p>Ofertas</p>
+          </Link>
+          <Link to='/login'>
+            <p>Login</p>
+          </Link>
+          <Link to='/auth/register'>
+            <p>Registro</p>
+          </Link>
+          <Link to='/aboutus'>
+            <p>Quienes somos</p>
+          </Link>
         </div>
       </div>
       <div className='footer__box'>

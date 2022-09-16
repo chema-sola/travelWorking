@@ -4,7 +4,7 @@ import { Cartas } from '../Cartas/Cartas'
 
 //imagen
 import img01 from '../assets/img/img01.webp'
-import header01 from '../assets/img/header_frontpage_0.webp'
+import header01 from '../assets/img/img14.jpg'
 import header02 from '../assets/img/header_frontpage_2_sm.webp'
 
 import './home.css'
