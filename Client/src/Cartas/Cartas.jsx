@@ -3,9 +3,10 @@ import { Producto } from './Componentes/Card'
 import { useSelector } from 'react-redux'
 
 import './cards.css'
+import { useTrabajos } from '../hooks'
 
 export const Cartas = ({ size, buscador = '' }) => {
-  const { trabajos } = useSelector((state) => state.trabajos)
+  const { trabajos } = useTrabajos()
 
   return (
     <div className='products__grid'>
