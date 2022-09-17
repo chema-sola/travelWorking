@@ -43,9 +43,7 @@ export const Menu = () => {
           </>
         )}
 
-        {user.id ? (
-          <li>{user.nombre}</li>
-        ) : (
+        {!user.id && (
           <li>
             <Link to='/auth/login' className='nav-link'>
               {'Login'}
