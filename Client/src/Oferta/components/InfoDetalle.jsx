@@ -9,7 +9,7 @@ import { IoIosSchool } from 'react-icons/io'
 
 import { Gallery } from './gallery'
 
-export const InfoDetalle = ({ trabajoActive, user }) => {
+export const InfoDetalle = ({ trabajoActive, user, inscribirseFn }) => {
   const { id } = useParams()
   const {
     disponibilidadinicial,
@@ -24,6 +24,7 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
     otros,
     alojamiento,
   } = trabajoActive
+
   return (
     <>
       <h2>{titulo}</h2>
@@ -47,8 +48,10 @@ export const InfoDetalle = ({ trabajoActive, user }) => {
               </Link>
             ) : (
               <>
-                {user.host === 0 ? (
-                  <button className='button'>Inscribirme</button>
+                {user.isHost === 0 && !user.candidaturas.some((candidatura) => candidatura.id == id) ? (
+                  <button onClick={() => inscribirseFn(id, user.id)} className='button'>
+                    Inscribirme
+                  </button>
                 ) : (
                   <button className='disbaled_button' disabled={true} style={{ opacity: 0.6 }}>
                     Inscribirme

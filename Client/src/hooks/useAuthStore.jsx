@@ -8,6 +8,7 @@ import {
   onUpdateUser,
   onLoadMisTrabajos,
   deleteOneTrabajoMio,
+  onAddMisInscripciones,
 } from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
@@ -66,6 +67,17 @@ export const useAuthStore = () => {
     }
   }
 
+  const startInscribirseOferta = async (trabajoId, clienteId) => {
+    try {
+      const response = await trabajosApi(`/trabajo/${trabajoId}/cliente/${clienteId}`, {}, 'POST')
+      const { data } = await response.json()
+      dispatch(onAddMisInscripciones(data.Trabajo))
+    } catch (error) {
+      console.log('Error al cargar los datos')
+      console.log(error)
+    }
+  }
+
   const startDeletingOneTrabajoMio = async (id) => {
     try {
       await trabajosApi(`/trabajo/${id}`, { id }, 'DELETE')
@@ -86,5 +98,6 @@ export const useAuthStore = () => {
     logOut,
     startLoadAllMisTrabajos,
     startDeletingOneTrabajoMio,
+    startInscribirseOferta,
   }
 }

@@ -9,8 +9,8 @@ import 'react-quill/dist/quill.snow.css'
 import './Ofertadetalle.css'
 
 export const Ofertadetalle = () => {
-  const { setActiveTrabajo, trabajoActive, isLoading } = useTrabajos()
-  const { user } = useAuthStore()
+  const { setActiveTrabajo, trabajoActive } = useTrabajos()
+  const { user, startInscribirseOferta } = useAuthStore()
   const { id } = useParams()
 
   useEffect(() => {
@@ -20,7 +20,11 @@ export const Ofertadetalle = () => {
   return (
     <Container className='detalles__container'>
       <div className='containerdetalle'>
-        {!!trabajoActive ? <InfoDetalle trabajoActive={trabajoActive[0]} user={user} /> : <p>Loading...</p>}
+        {!!trabajoActive ? (
+          <InfoDetalle trabajoActive={trabajoActive[0]} user={user} inscribirseFn={startInscribirseOferta} />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </Container>
   )
