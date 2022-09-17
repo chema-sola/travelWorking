@@ -271,3 +271,22 @@ export const getTrabajosCreadosPorMi = async (req, res = response) => {
     })
   }
 }
+
+export const getClientesInscritoEnMiOferta = async (req, res = response) => {
+  try {
+    const { id } = req.params
+    const inscritos = await TrabajosClientes.findAll({ where: { TrabajoId: id }, include: [{ model: Clientes }] })
+    console.log('-------> ', id)
+    return res.status(200).json({
+      ok: true,
+      data: inscritos,
+      msg: 'Inscritos recibidos',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No se han podido ob tener los trabajos creados',
+    })
+  }
+}
