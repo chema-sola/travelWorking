@@ -1,6 +1,5 @@
 import { response } from 'express'
-import { Op, where } from 'sequelize'
-import { v4 } from 'uuid'
+import { Op } from 'sequelize'
 import multer from 'multer'
 
 import { Trabajo } from '../models/trabajoModel.js'
