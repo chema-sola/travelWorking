@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import { EstadoCandidaturas } from '../EstadoCandidaturas/EstadoCandidaturas'
 
 import './candidatura.css'
 export const Cliente = ({ cliente, startChangeEstado }) => {
   const { estado, Cliente } = cliente
-  const { nombre, apellidos, telefono, pais, ciudad, cpostal } = Cliente
+  const { nombre, apellidos, telefono, pais, ciudad, cpostal, id } = Cliente
 
   return (
     <div className='candidatura'>
@@ -15,9 +16,9 @@ export const Cliente = ({ cliente, startChangeEstado }) => {
         />
         <div className='candidatura__text_wapper'>
           <div>
-            <h2 className='candidatura__title'>
+            <Link to={`/perfil/${id}`} className='candidatura__title'>
               {nombre} {apellidos}
-            </h2>
+            </Link>
           </div>
           <div>
             <p className='candidatura__country'>{telefono}</p>
