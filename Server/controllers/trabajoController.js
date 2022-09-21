@@ -1,9 +1,22 @@
 import { response } from 'express'
-import { Op } from 'sequelize'
+import { Op, where } from 'sequelize'
+import { v4 } from 'uuid'
+import multer from 'multer'
 
 import { Trabajo } from '../models/trabajoModel.js'
 import { Clientes } from '../models/clienteModel.js'
 import { TrabajosClientes } from '../models/trabajoCliente.js'
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  },
+})
+
+const upload = multer({ storage: storage }).single('file')
 
 export const getTrabajos = async (req, res = response) => {
   try {
@@ -69,47 +82,60 @@ export const getITrabajoById = async (req, res = response) => {
 
 export const createTrabajo = async (req, res = response) => {
   try {
-    const {
-      disponibilidadinicial,
-      disponibilidadfinal,
-      descripcion,
-      ayuda,
-      idioma,
-      residencia,
-      otros,
-      viajerosMinimo,
-      horasdia,
-      ClienteId, // quien ha publicado la oferta
-      titulo,
-      alojamiento,
-    } = req.body
+    upload(req, res, async (err) => {
+      if (err instanceof multer.MulterError) {
+        return res.status(500).json(err)
+      } else if (err) {
+        return res.status(500).json(err)
+      }
 
-    if (new Date(disponibilidadinicial) >= new Date(disponibilidadfinal)) {
-      return res.status(500).json({
-        ok: false,
-        msg: 'La fecha fin ha de ser mayor a la fecha inicio.',
+      if (!req.file) return res.status(400).json({ ok: false, error: 'dades incompletes' })
+
+      const {
+        disponibilidadinicial,
+        disponibilidadfinal,
+        descripcion,
+        ayuda,
+        idioma,
+        residencia,
+        otros,
+        viajerosMinimo,
+        horasdia,
+        ClienteId, // quien ha publicado la oferta
+        titulo,
+        alojamiento,
+      } = JSON.parse(req.body.datos)
+
+      const image = req.file.filename
+
+      if (new Date(disponibilidadinicial) >= new Date(disponibilidadfinal)) {
+        return res.status(500).json({
+          ok: false,
+          msg: 'La fecha fin ha de ser mayor a la fecha inicio.',
+        })
+      }
+
+      const trabajo = await Trabajo.create({
+        disponibilidadinicial,
+        disponibilidadfinal,
+        descripcion,
+        ayuda,
+        idioma,
+        residencia,
+        otros,
+        viajerosMinimo,
+        horasdia,
+        ClienteId,
+        titulo,
+        alojamiento,
+        image,
       })
-    }
 
-    const trabajo = await Trabajo.create({
-      disponibilidadinicial,
-      disponibilidadfinal,
-      descripcion,
-      ayuda,
-      idioma,
-      residencia,
-      otros,
-      viajerosMinimo,
-      horasdia,
-      ClienteId,
-      titulo,
-      alojamiento,
-    })
-
-    return res.status(200).json({
-      ok: true,
-      data: trabajo,
-      msg: 'Oferta de trabajo creado correctamente',
+      return res.status(200).json({
+        ok: true,
+        data: trabajo,
+        msg: 'Oferta de trabajo creado correctamente',
+      })
     })
   } catch ({ message }) {
     return res.status(500).json({
@@ -132,7 +158,7 @@ export const updateTrabajo = async (req, res = response) => {
     if (!trabajo) {
       return res.status(404).json({
         ok: false,
-        msg: 'El trabajo no existe',
+        msg: 'El trabajo no existe 2',
       })
     }
 
@@ -163,7 +189,6 @@ export const deleteTrabajo = async (req, res = response) => {
   try {
     const { id } = req.params
     const trabajo = await Trabajo.findOne({ where: { id } })
-    console.log(id, '<-------------')
     if (!trabajo) {
       return res.status(404).json({
         ok: false,
@@ -211,6 +236,35 @@ export const inscribirteTrabajo = async (req, res = response) => {
       ok: false,
       error: message,
       msg: 'No te has podido inscribir a la oferta de trabajo',
+    })
+  }
+}
+
+export const cambiarEstado = async (req, res = response) => {
+  try {
+    const { trabajoId, clienteId, estado } = req.body
+
+    const clienteTrabajo = await TrabajosClientes.findOne({ where: { TrabajoId: trabajoId, ClienteId: clienteId } })
+    console.log('----------->', { trabajoId, clienteId, estado })
+    if (!clienteTrabajo) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'El trabajo no existe',
+      })
+    }
+
+    await clienteTrabajo.update({ TrabajoId: trabajoId, ClienteId: clienteId, estado })
+
+    return res.status(200).json({
+      ok: true,
+      data: clienteTrabajo,
+      msg: 'Se ha actualizado la candidatura con éxito',
+    })
+  } catch ({ message }) {
+    return res.status(500).json({
+      ok: false,
+      error: message,
+      msg: 'No se ha podido cambiar el estado de la inscripción',
     })
   }
 }
@@ -276,7 +330,7 @@ export const getClientesInscritoEnMiOferta = async (req, res = response) => {
   try {
     const { id } = req.params
     const inscritos = await TrabajosClientes.findAll({ where: { TrabajoId: id }, include: [{ model: Clientes }] })
-    console.log('-------> ', id)
+
     return res.status(200).json({
       ok: true,
       data: inscritos,

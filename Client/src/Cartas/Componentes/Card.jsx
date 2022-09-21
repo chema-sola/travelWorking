@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom'
 import { useSubstring } from '../../hooks'
 
-export const Producto = ({ id, titulo, descripcion }) => {
+export const Producto = ({ id, titulo, descripcion, image }) => {
   const newDesc = useSubstring(descripcion, 80)
 
   return (
     <div className='product'>
       <img
         className='product-img'
-        src='https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+        src={
+          image
+            ? `http://localhost:4000/img/${image}`
+            : 'https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+        }
         alt='Rome'
       />
       <div className='product-content'>

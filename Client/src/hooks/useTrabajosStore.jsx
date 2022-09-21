@@ -8,6 +8,7 @@ import {
   setLoading,
   setSyncActivo,
   setUpdateTrabajo,
+  onDeleteTrabajo,
 } from '../store/trabajo'
 
 export const useTrabajos = () => {
@@ -46,10 +47,23 @@ export const useTrabajos = () => {
 
   const startCreateNewTrabajo = async (trabajo) => {
     try {
-      const response = await trabajosApi(`/trabajo`, trabajo, 'POST')
+      // const response = await trabajosApi(`/trabajo`, trabajo, 'POST')
+      const response = await fetch('http://localhost:4000/api/trabajo', {
+        method: 'POST',
+        body: trabajo,
+      })
       const { data } = await response.json()
       dispatch(addNewJob(data))
       console.log(data)
+    } catch (error) {
+      console.log('Error al guardar')
+      console.log(error)
+    }
+  }
+
+  const startDeleteTrabajo = async (id) => {
+    try {
+      dispatch(onDeleteTrabajo(id))
     } catch (error) {
       console.log('Error al guardar')
       console.log(error)
@@ -70,20 +84,6 @@ export const useTrabajos = () => {
     }
   }
 
-  const startSetLoading = () => {
-    dispatch(setLoading())
-  }
-
-  const startLoadAllTrabajosInscritos = async (clientId) => {
-    try {
-      const response = await trabajosApi(`/trabajo/${clientId}/candidaturas`)
-      const { data } = await response.json()
-    } catch (error) {
-      console.log('Error al cargar los datos')
-      console.log(error)
-    }
-  }
-
   return {
     startLoadAllNotes,
     trabajos,
@@ -93,6 +93,6 @@ export const useTrabajos = () => {
     startCreateNewTrabajo,
     startUpdateTrabajo,
     setSyncActiveTrabajo,
-    startSetLoading,
+    startDeleteTrabajo,
   }
 }

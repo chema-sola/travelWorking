@@ -15,7 +15,7 @@ export const Ofertas = () => {
   return (
     <Container>
       <Form>
-        <Form.Group className='mb-3'>
+        <Form.Group className='mb-3 cartas__buscador'>
           <Form.Label>Buscar por palabra clave:</Form.Label>
           <Form.Control
             type='text'

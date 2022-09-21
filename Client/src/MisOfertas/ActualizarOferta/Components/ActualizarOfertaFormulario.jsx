@@ -45,6 +45,7 @@ export const ActualizarOfertaFormulario = ({ trabajoActive }) => {
   }
   return (
     <Container>
+      <h1>Actualizar oferta: </h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
           <FloatingLabel label='Titulo'>

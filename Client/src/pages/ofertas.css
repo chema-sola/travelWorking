@@ -1,0 +1,9 @@
+.cartas__buscador {
+    width: 50%;
+}
+
+@media screen and (max-width: 920px) {
+    .cartas__buscador {
+        width: 100%;
+    }
+}

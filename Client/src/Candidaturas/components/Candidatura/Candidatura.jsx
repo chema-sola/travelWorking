@@ -3,7 +3,7 @@ import { EstadoCandidaturas } from '../EstadoCandidaturas/EstadoCandidaturas'
 
 import './candidatura.css'
 export const Candidatura = ({ candidatura }) => {
-  const { disponibilidadinicial, disponibilidadfinal, residencia, horasdia, titulo, estado } = candidatura
+  const { disponibilidadinicial, disponibilidadfinal, residencia, horasdia, titulo, estado, image } = candidatura
 
   const newTitulo = useSubstring(titulo, 30)
   return (
@@ -11,7 +11,11 @@ export const Candidatura = ({ candidatura }) => {
       <div className='candidatura__left'>
         <img
           className='candidatura__img'
-          src='https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+          src={
+            image
+              ? `http://localhost:4000/img/${image}`
+              : 'https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+          }
           alt={titulo}
         />
         <div className='candidatura__text_wapper'>

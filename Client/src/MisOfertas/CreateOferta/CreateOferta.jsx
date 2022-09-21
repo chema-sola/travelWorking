@@ -6,8 +6,9 @@ import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstra
 import { useAuthStore, useForm, useTrabajos } from '../../hooks'
 
 import 'react-quill/dist/quill.snow.css'
+import { ImageUpload } from '../Components/ImageUpload'
 
-const formData = {
+const formDatos = {
   disponibilidadinicial: '',
   disponibilidadfinal: '',
   descripcion: '',
@@ -21,9 +22,10 @@ const formData = {
 export const CreateOferta = () => {
   const { startCreateNewTrabajo } = useTrabajos()
   const { user } = useAuthStore()
-  const [formValues, onChange] = useForm(formData)
+  const [formValues, onChange] = useForm(formDatos)
   const [idioma, setIdioma] = useState('')
   const [otros, setOtros] = useState('')
+  const [image, setImage] = useState(null)
 
   const {
     disponibilidadinicial,
@@ -34,21 +36,36 @@ export const CreateOferta = () => {
     viajerosMinimo,
     horasdia,
     titulo,
+    alojamiento,
   } = formValues
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const data = { ...formValues, idioma, otros, ClienteId: Number(user.id) }
+    const data = new FormData()
+    const datos = { ...formValues, idioma, otros, ClienteId: Number(user.id) }
+    delete datos.image
+
+    data.append('datos', JSON.stringify(datos))
+    data.append('file', image)
+
     startCreateNewTrabajo(data)
   }
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className='mb-3'>
-          <FloatingLabel label='Titulo'>
-            <Form.Control type='text' name='titulo' onChange={onChange} value={titulo} placeholder='Título' />
-          </FloatingLabel>
-        </Form.Group>
+      <h1>Crear oferta: </h1>
+      <Form onSubmit={handleSubmit} encType='multipart/form-data'>
+        <Row style={{ border: 'none' }}>
+          <Col>
+            <Form.Group className='mb-3'>
+              <FloatingLabel label='Titulo'>
+                <Form.Control type='text' name='titulo' onChange={onChange} value={titulo} placeholder='Título' />
+              </FloatingLabel>
+            </Form.Group>
+          </Col>
+          <Col>
+            <ImageUpload useFoto={[image, setImage]} />
+          </Col>
+        </Row>
         <Row style={{ border: 'none' }}>
           <Col>
             <Form.Group className='mb-3'>
@@ -119,6 +136,17 @@ export const CreateOferta = () => {
             </Form.Group>
           </Col>
         </Row>
+        <FloatingLabel label='Alojamiento'>
+          <Form.Control
+            as='textarea'
+            name='alojamiento'
+            placeholder='Alojamiento'
+            style={{ height: '100px' }}
+            className='mb-3'
+            value={alojamiento}
+            onChange={onChange}
+          />
+        </FloatingLabel>
         <FloatingLabel label='Descripcion'>
           <Form.Control
             as='textarea'

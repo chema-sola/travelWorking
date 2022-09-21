@@ -9,6 +9,7 @@ export const Candidaturas = () => {
   const { candidaturas } = user
   return (
     <Container style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+      <h1>Mis candidaturas</h1>
       <div className='candidaturas'>
         {candidaturas.map((candidatura) => (
           <Candidatura key={candidatura.id} candidatura={candidatura} />

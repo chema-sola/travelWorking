@@ -23,6 +23,7 @@ export const InfoDetalle = ({ trabajoActive, user, inscribirseFn }) => {
     idioma,
     otros,
     alojamiento,
+    image,
   } = trabajoActive
 
   return (
@@ -129,7 +130,7 @@ export const InfoDetalle = ({ trabajoActive, user, inscribirseFn }) => {
         <p>{horasdia}</p>
       </div>
       <div style={{ marginTop: '3rem' }}>
-        <Gallery />
+        <Gallery img={`//localhost:4000/img/${image}`} />
       </div>
     </>
   )

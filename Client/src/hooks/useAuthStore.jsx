@@ -9,12 +9,14 @@ import {
   onLoadMisTrabajos,
   deleteOneTrabajoMio,
   onAddMisInscripciones,
+  onAddMisTrabajosActive,
+  onUpdateMisTrabajosActive,
 } from '../store/auth/authSlice'
 
 import { trabajosApi } from '../helpers/fetch'
 
 export const useAuthStore = () => {
-  const { status, user, activeUser } = useSelector((state) => state.auth)
+  const { status, user, activeUser, misTrabajos, misTrabajosActive } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
   const startLogin = async ({ email, password }) => {
@@ -78,6 +80,29 @@ export const useAuthStore = () => {
     }
   }
 
+  const startGetClientesMisTrabajos = async (trabajoId) => {
+    try {
+      const response = await trabajosApi(`/trabajo/miTrabajo/${trabajoId}/clientes`, {}, 'GET')
+      const { data } = await response.json()
+      dispatch(onAddMisTrabajosActive(data))
+    } catch (error) {
+      console.log('Error al cargar los datos')
+      console.log(error)
+    }
+  }
+
+  const startChangeEstado = async (estado, trabajoId, clienteId) => {
+    try {
+      const response = await trabajosApi(`/trabajo/cambiarEstado`, { estado, clienteId, trabajoId }, 'PUT')
+      const { data } = await response.json()
+      dispatch(onUpdateMisTrabajosActive(data))
+      console.log(data)
+    } catch (error) {
+      console.log('Error al actualizar')
+      console.log(error)
+    }
+  }
+
   const startDeletingOneTrabajoMio = async (id) => {
     try {
       await trabajosApi(`/trabajo/${id}`, { id }, 'DELETE')
@@ -91,13 +116,17 @@ export const useAuthStore = () => {
   return {
     status,
     user,
+    misTrabajos,
+    activeUser,
+    misTrabajosActive,
     startLogin,
     startGettingInfoProfile,
-    activeUser,
     startUpdatingPerfil,
     logOut,
     startLoadAllMisTrabajos,
     startDeletingOneTrabajoMio,
     startInscribirseOferta,
+    startGetClientesMisTrabajos,
+    startChangeEstado,
   }
 }

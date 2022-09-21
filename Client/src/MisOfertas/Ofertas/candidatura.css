@@ -16,6 +16,7 @@
 .candidatura__right {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 .candidatura__img {

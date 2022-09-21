@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Candidaturas } from '../Candidaturas/Candidaturas'
+import { ClientesCandidatura } from '../ClientesCandidatura/ClientesCandidatura'
 import { ActualizarOferta } from '../MisOfertas/ActualizarOferta/ActualizarOferta'
 import { CreateOferta } from '../MisOfertas/CreateOferta/CreateOferta'
 import { MisOfertas } from '../MisOfertas/MisOfertas'
@@ -13,6 +14,7 @@ export const PrivateRoutes = () => {
       <Route path='/miOferta/create' element={<CreateOferta />} />
       <Route path='/editMiOferta/:id' element={<ActualizarOferta />} />
       <Route path='/editPerfil/:id' element={<EditPerfil />} />
+      <Route path='/miOferta/:id/clientes' element={<ClientesCandidatura />} />
       <Route path='/*' element={<Navigate to='/' />} />
     </Routes>
   )

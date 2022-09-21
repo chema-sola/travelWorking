@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { useAuthStore, useSubstring } from '../../hooks'
+import { useAuthStore, useSubstring, useTrabajos } from '../../hooks'
 
 import { IoTrashOutline } from 'react-icons/io5'
 import { BsPerson } from 'react-icons/bs'
@@ -10,12 +10,14 @@ import './candidatura.css'
 
 export const Ofertas = ({ oferta }) => {
   const { startDeletingOneTrabajoMio } = useAuthStore()
-  const { residencia, titulo, id, TrabajosClientes: trabajosCliente } = oferta
+  const { startDeleteTrabajo } = useTrabajos()
+  const { residencia, titulo, id, TrabajosClientes: trabajosCliente, image } = oferta
 
   const newTitulo = useSubstring(titulo, 30)
 
   const handleDeleteOneTrabajo = () => {
     startDeletingOneTrabajoMio(id)
+    startDeleteTrabajo(id)
   }
 
   return (
@@ -23,7 +25,11 @@ export const Ofertas = ({ oferta }) => {
       <div className='candidatura__left'>
         <img
           className='candidatura__img'
-          src='https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+          src={
+            image
+              ? `http://localhost:4000/img/${image}`
+              : 'https://www.noegasystems.com/wp-content/uploads/zonificacion-almacen-1.jpg'
+          }
           alt={titulo}
         />
         <div className='candidatura__text_wapper'>
@@ -41,7 +47,7 @@ export const Ofertas = ({ oferta }) => {
         </div>
       </div>
       <div className='candidatura__right'>
-        <Link to={`/private/miOferta/view/${id}`} className='product-btn product-cart-btn'>
+        <Link to={`/private/miOferta/${id}/clientes`} className='product-btn product-cart-btn'>
           <BsPerson height={'2rem'} />
         </Link>
         <Link to={`/private/editMiOferta/${id}`} className='product-btn product-update-btn'>

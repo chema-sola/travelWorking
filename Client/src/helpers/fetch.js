@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:4000/api'
 
-export const trabajosApi = (endpoint, data, method = 'GET') => {
+export const trabajosApi = (endpoint, data, method = 'GET', contentType = 'application/json') => {
   const url = `${baseUrl}${endpoint}`
 
   // Opciones por defecto estan marcadas con un *

@@ -6,6 +6,8 @@ export const authSlice = createSlice({
     status: 'not-authenticated', // 'authenticated','not-authenticated','checking'
     user: {},
     activeUser: null,
+    misTrabajos: null,
+    misTrabajosActive: null,
   },
   reducers: {
     onCheking: (state) => {
@@ -33,6 +35,18 @@ export const authSlice = createSlice({
     onAddMisInscripciones: (state, { payload }) => {
       state.user.candidaturas = [...state.user.candidaturas, { ...payload, estado: 'Pendiente' }]
     },
+    onAddMisTrabajosActive: (state, { payload }) => {
+      state.misTrabajosActive = payload
+    },
+    onUpdateMisTrabajosActive: (state, { payload }) => {
+      state.misTrabajosActive = state.misTrabajosActive.map((miTrabajo) =>
+        miTrabajo.TrabajoId === payload.TrabajoId && miTrabajo.ClienteId === payload.ClienteId
+          ? { ...miTrabajo, ...payload }
+          : miTrabajo
+      )
+
+      // console.log(payload[0].ClienteId)
+    },
     deleteOneTrabajoMio: (state, { payload }) => {
       state.user.misTrabajos = state.user.misTrabajos.filter((trabajo) => trabajo.id !== payload)
     },
@@ -48,4 +62,6 @@ export const {
   onUpdateUser,
   deleteOneTrabajoMio,
   onAddMisInscripciones,
+  onAddMisTrabajosActive,
+  onUpdateMisTrabajosActive,
 } = authSlice.actions

@@ -1,11 +1,8 @@
+import { memo } from 'react'
 import ImageGallery from 'react-image-gallery'
 import Imagen from '../../assets/img/1.jpeg'
 
 const images = [
-  {
-    original: Imagen,
-    thumbnail: Imagen,
-  },
   {
     original: Imagen,
     thumbnail: Imagen,
@@ -16,6 +13,6 @@ const images = [
   },
 ]
 
-export const Gallery = () => {
-  return <ImageGallery items={images} />
-}
+export const Gallery = memo(({ img }) => {
+  return <ImageGallery items={[{ original: `/${img}`, thumbnail: `/${img}` }, ...images]} />
+})
